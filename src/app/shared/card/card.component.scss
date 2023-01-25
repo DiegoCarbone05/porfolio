@@ -1,0 +1,123 @@
+//	297 × 167 px
+.card-container {
+  flex-direction: column;
+  .card-group {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin: auto;
+    flex-direction: column;
+
+    article {
+      transition: all 0.1s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      .wrap-img {
+        width: 100%;
+        height: 200px;
+        border-radius: 8px;
+        background-size: cover !important;
+      }
+
+      span {
+        width: 80%;
+        padding: 20px 0;
+        margin-left: 30px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+        p {
+          line-height: 1.5;
+        }
+
+        button {
+          background: none;
+          border: none;
+          padding: 0;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          font-size: 1rem;
+          color: #0067b8;
+          font-weight: 600;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .card-container {
+    .card-group {
+      width: 100%;
+      flex-direction: row;
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .card-container {
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    margin: auto;
+    max-width: 1630px;
+    flex-direction: row;
+
+    .card-group {
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+
+      article {
+        transition: all 0.1s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        .wrap-img {
+          width: 100%;
+          height: 200px;
+          border-radius: 8px;
+          background-size: cover !important;
+        }
+
+        span {
+          width: 80%;
+          padding: 20px 0;
+          margin-left: 30px;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+          p {
+            line-height: 1.5;
+          }
+
+          button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #0067b8;
+            font-weight: 600;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

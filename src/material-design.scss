@@ -1,0 +1,59 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$blss-color: (
+  50: #ffffff,
+  100: #fff7f4,
+  200: #fecdbd,
+  300: #fc9977,
+  400: #fc8259,
+  500: #1a73e8,
+  600: #fa551d,
+  700: #f44205,
+  800: #d63a04,
+  900: #b83204,
+  A100: #ffffff,
+  A200: #fff7f4,
+  A400: #1a73e8,
+  A700: #f44205,
+  contrast: (
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A700: white,
+  ),
+);
+
+$app-studio-primary: mat.define-palette($blss-color);
+$app-studio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$app-studio-warn: mat.define-palette(mat.$red-palette);
+
+$app-studio-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-studio-primary,
+      accent: $app-studio-accent,
+      warn: $app-studio-warn,
+    ),
+  )
+);
+$app-studio-theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $app-studio-primary,
+      accent: $app-studio-accent,
+      warn: $app-studio-warn,
+    ),
+  )
+);
+
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-themes($app-studio-theme-dark);
+}
+@media (prefers-color-scheme: light) {
+  @include mat.all-component-themes($app-studio-theme);
+}

@@ -1,0 +1,46 @@
+<div class="card-container">
+  <div class="card-group">
+    <article mat-ripple>
+      <img [src]="data[0].picture" [alt]="data[0].title" width="100%" />
+      <span>
+        <h3>{{ data[0].title }}</h3>
+        <p>{{ data[0].descript }}</p>
+        <button *ngIf="data[0].button">
+          {{ data[0].button }}<mat-icon>chevron_right</mat-icon>
+        </button>
+      </span>
+    </article>
+    <article mat-ripple>
+      <img [src]="data[1].picture" [alt]="data[1].title" width="100%" />
+      <span>
+        <h3>{{ data[1].title }}</h3>
+        <p>{{ data[1].descript }}</p>
+        <button *ngIf="data[1].button">
+          {{ data[1].button }}<mat-icon>chevron_right</mat-icon>
+        </button>
+      </span>
+    </article>
+  </div>
+  <div class="card-group">
+    <article mat-ripple>
+      <img [src]="data[2].picture" [alt]="data[2].title" width="100%" />
+      <span>
+        <h3>{{ data[2].title }}</h3>
+        <p>{{ data[2].descript }}</p>
+        <button *ngIf="data[2].button">
+          {{ data[2].button }}<mat-icon>chevron_right</mat-icon>
+        </button>
+      </span>
+    </article>
+    <article mat-ripple>
+      <img [src]="data[3].picture" [alt]="data[3].title" width="100%" />
+      <span>
+        <h3>{{ data[3].title }}</h3>
+        <p>{{ data[3].descript }}</p>
+        <button *ngIf="data[3].button">
+          {{ data[3].button }}<mat-icon>chevron_right</mat-icon>
+        </button>
+      </span>
+    </article>
+  </div>
+</div>

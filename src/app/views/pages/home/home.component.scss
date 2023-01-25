@@ -1,0 +1,31 @@
+
+.card-container{
+  width: 100%;
+  max-width: 1600px;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto;
+  gap: 22px;
+}
+.wrap-title{
+
+  width: 90%;
+  margin: 100px auto 80px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+
+  h3{
+    margin: 0 0 20px 0;
+  }
+
+  .pipe{
+    width: 100px;
+    height: 4px;
+    background-color: var(--color-primary);
+  }
+
+}

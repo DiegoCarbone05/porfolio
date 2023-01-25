@@ -1,0 +1,44 @@
+:root {
+  --color-primary: #ff833c;
+  --color-primary-tint-100: #ff833c85;
+  --color-primary-tint-200: #ff833c21;
+
+  --color-step-50: #1e1e1e;
+  --color-step-100: #2a2a2a;
+  --color-step-150: #363636;
+  --color-step-200: #414141;
+  --color-step-250: #4d4d4d;
+  --color-step-300: #595959;
+  --color-step-350: #656565;
+  --color-step-400: #717171;
+  --color-step-450: #7d7d7d;
+  --color-step-500: #898989;
+  --color-step-550: #949494;
+  --color-step-600: #a0a0a0;
+  --color-step-650: #acacac;
+  --color-step-700: #b8b8b8;
+  --color-step-750: #c4c4c4;
+  --color-step-800: #d0d0d0;
+  --color-step-850: #dbdbdb;
+  --color-step-900: #e7e7e7;
+  --color-step-950: #f3f3f3;
+  --color-step-1000: #ffffff;
+
+  --header-surface: #ffffffb8;
+  --body-surface: var(--color-step-1000);
+  --foreground-color: var(--color-step-50);
+  --logotype-font-color: var(--color-step-300);
+  --header-border-color:#8080802f;
+  --hero-surface:var(--color-step-950);
+}
+@media (prefers-color-scheme: dark) {
+
+  :root{
+    --header-surface: #161616cc;
+    --body-surface: var(--color-step-50);
+    --foreground-color: var(--color-step-1000);
+    --logotype-font-color: var(--color-step-1000);
+    --header-border-color:#3535352f;
+    --hero-surface:var(--color-step-200);
+  }
+}

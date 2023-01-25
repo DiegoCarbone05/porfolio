@@ -1,0 +1,16 @@
+@import "./material-design.scss";
+@import url("./global.scss");
+
+html,
+body {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: var(--body-surface);
+  margin: 0;
+}
