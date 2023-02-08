@@ -1,5 +1,6 @@
 import { UtilsService } from './../../core/services/utils.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface navItem {
   text: string;
@@ -17,7 +18,7 @@ export class HeaderComponent {
 
   darkMode: boolean = false;
 
-  constructor(private utilsSvc: UtilsService) {
+  constructor(private utilsSvc: UtilsService, private router:Router) {
     this.navItems = [
       { text: 'Inicio', path: '/home', icon: 'home' },
       { text: 'Sobre mi', path: '/about', icon: 'person' },
@@ -40,5 +41,11 @@ export class HeaderComponent {
       this.utilsSvc.setTheme('dark');
       localStorage.setItem('theme', 'dark');
     }
+  }
+
+  goToAuth(){
+    console.log('go to auth');
+
+    this.router.navigateByUrl('auth/login')
   }
 }

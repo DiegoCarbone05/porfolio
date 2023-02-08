@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UtilsService {
-  constructor() {}
+  constructor() {
+    this.checkTheme()
+  }
 
   checkTheme() {
     if (localStorage.getItem('theme')) {
@@ -22,7 +24,8 @@ export class UtilsService {
       }
     } else {
       document.body.classList.add('light');
-    }
+    localStorage.setItem('theme', 'light');
+  }
   }
 
   setTheme(theme: 'light' | 'dark') {

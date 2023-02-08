@@ -5,7 +5,6 @@
         <p class="logo-title">Diego <span>Carbone</span></p>
       </div>
 
-
       <div class="wrap">
         <!-- <img src="assets/Logo.svg" alt=""> -->
         <div class="nav-region">
@@ -31,10 +30,7 @@
               darkMode ? "brightness_4" : "brightness_7"
             }}</mat-icon>
           </button>
-          <button
-            mat-icon-button
-            aria-label="Example icon button with a vertical three dot icon"
-          >
+          <button mat-icon-button (click)="goToAuth()">
             <mat-icon>person</mat-icon>
           </button>
         </div>
@@ -42,68 +38,30 @@
     </div>
   </header>
   <header class="mobile">
-
-
     <div class="hr-contnet">
-
-
       <div class="wrap">
         <button mat-icon-button>
           <mat-icon class="mat-18">menu</mat-icon>
         </button>
       </div>
 
-
-      <div class="wrap">
+      <div class="wrap-logo">
         <p class="logo-title">Diego <span>Carbone</span></p>
       </div>
 
-
       <div class="wrap">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="changeTheme()">
+          <mat-icon class="mat-18">{{
+            darkMode ? "brightness_4" : "brightness_7"
+          }}</mat-icon>
+        </button>
+        <button mat-icon-button (click)="goToAuth()">
           <mat-icon class="mat-18">person</mat-icon>
         </button>
       </div>
-
-      <!-- <div class="wrap">
-        <div class="nav-region">
-          <button
-            *ngFor="let item of navItems"
-            class="tab-button"
-            [routerLink]="item.path"
-            routerLinkActive="selected"
-          >
-            {{ item.text }}
-          </button>
-        </div>
-      </div>
-
-      <div class="wrap">
-        <div class="tools-region">
-          <button
-            (click)="changeTheme()"
-            mat-icon-button
-            aria-label="Example icon button with a vertical three dot icon"
-          >
-            <mat-icon>{{
-              darkMode ? "brightness_4" : "brightness_7"
-            }}</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            aria-label="Example icon button with a vertical three dot icon"
-          >
-            <mat-icon>person</mat-icon>
-          </button>
-        </div>
-      </div> -->
-
-
     </div>
   </header>
   <div class="pseudonav"></div>
-
-
 
   <div class="content">
     <ng-content></ng-content>

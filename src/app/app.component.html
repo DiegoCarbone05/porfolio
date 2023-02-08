@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div class="wrap-spinner" *ngIf="spinnerStatus">
+  <div class="content">
+    <img src="assets/resources/logos/dielogo.svg" width="200" alt="">
+    <br><br><br><br>
+    <!-- <p>Iniciando App</p> -->
+    <mat-spinner></mat-spinner>
+
+  </div>
+  <img class="cs-logo" src="assets/resources/logos/cs-logo.svg" width="200" alt="">
+</div>
+<router-outlet *ngIf="!spinnerStatus"></router-outlet>

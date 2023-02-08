@@ -1,4 +1,4 @@
-@import "./material-design.scss";
+@import "./css/material-design.scss";
 @import url("./global.scss");
 
 html,
@@ -13,4 +13,10 @@ body {
 body {
   background-color: var(--body-surface);
   margin: 0;
+  transition: all 0.5s;
+  font-family: 'Product Sans', sans-serif;
+
+}
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark{
+  color: white !important;
 }

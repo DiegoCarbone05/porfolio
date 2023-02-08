@@ -9,9 +9,15 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'diego-carbone-pf';
-  constructor(private router: Router, private utilsSvc:UtilsService) {
-    // this.router.navigateByUrl('home')
+  spinnerStatus: boolean = true;
+  constructor(private router: Router, private utilsSvc: UtilsService) {
 
-    this.utilsSvc.checkTheme()
+
+    if(localStorage.getItem('theme')){
+      setTimeout(()=>{
+        this.spinnerStatus = false
+      }, 0)
+    }
   }
+
 }

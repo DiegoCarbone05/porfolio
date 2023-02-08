@@ -1,5 +1,4 @@
-
-.card-container{
+.card-container {
   width: 100%;
   max-width: 1600px;
   padding: 16px 0;
@@ -8,8 +7,7 @@
   margin: 30px auto;
   gap: 22px;
 }
-.wrap-title{
-
+.wrap-title {
   width: 90%;
   margin: 100px auto 80px auto;
   display: flex;
@@ -18,14 +16,14 @@
   align-items: center;
   font-size: 30px;
 
-  h3{
+  h3 {
     margin: 0 0 20px 0;
+    color: var(--foreground-color);
   }
 
-  .pipe{
+  .pipe {
     width: 100px;
     height: 4px;
     background-color: var(--color-primary);
   }
-
 }

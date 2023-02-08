@@ -39,6 +39,13 @@ header.mobile {
       height: 100%;
       position: relative;
       display: flex;
+      z-index: 2;
+    }
+    .wrap-logo{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
     }
   }
   .nav-region {
@@ -52,6 +59,7 @@ header.mobile {
     font-family: "Product Sans Medium Regular";
     color: var(--logotype-font-color);
     font-size: 16px;
+
 
     span {
       font-family: "Product Sans Medium Regular";
@@ -217,7 +225,7 @@ main {
           position: absolute;
           bottom: 0;
           transition: all 0.2s;
-          background-color: #0000003a;
+          background-color: var(--header-hover-tab);
         }
       }
 
@@ -230,13 +238,14 @@ main {
           bottom: 0;
           transition: all 0.2s;
           background-color: var(--color-primary);
+          box-shadow: 0 0 15px var(--color-primary);
         }
       }
     }
   }
   .content {
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     animation: startAnimation 0.5s;
   }
 }

@@ -2,20 +2,35 @@
 
 @include mat.core();
 
+$theme-foreground: (
+  base: gray,
+  disabled: rgba(200, 200, 200, 0.38),
+  disabled-button: rgba(200, 200, 200, 0.38),
+  disabled-text: rgba(200, 200, 200, 0.38),
+  hint-text: rgba(200, 200, 200, 0.38),
+  secondary-text: rgba(200, 200, 200, 0.54),
+  icon: rgba(200, 200, 200, 0.54),
+  icons: rgba(200, 200, 200, 0.54),
+  text: rgba(200, 200, 200, 0.87),
+  slider-min: rgba(200, 200, 200, 0.87),
+  slider-off: rgba(200, 200, 200, 0.26),
+  slider-off-active: rgba(200, 200, 200, 0.38),
+);
+
 $blss-color: (
   50: #ffffff,
   100: #fff7f4,
   200: #fecdbd,
   300: #fc9977,
   400: #fc8259,
-  500: #1a73e8,
+  500: var(--color-primary),
   600: #fa551d,
   700: #f44205,
   800: #d63a04,
   900: #b83204,
   A100: #ffffff,
   A200: #fff7f4,
-  A400: #1a73e8,
+  A400: var(--color-primary),
   A700: #f44205,
   contrast: (
     500: white,
@@ -39,6 +54,7 @@ $app-studio-theme: mat.define-light-theme(
       accent: $app-studio-accent,
       warn: $app-studio-warn,
     ),
+    foreground: $theme-foreground,
   )
 );
 $app-studio-theme-dark: mat.define-dark-theme(
@@ -48,12 +64,13 @@ $app-studio-theme-dark: mat.define-dark-theme(
       accent: $app-studio-accent,
       warn: $app-studio-warn,
     ),
+    foreground: $theme-foreground,
   )
 );
 
-@media (prefers-color-scheme: dark) {
+.dark {
   @include mat.all-component-themes($app-studio-theme-dark);
 }
-@media (prefers-color-scheme: light) {
+.light {
   @include mat.all-component-themes($app-studio-theme);
 }

@@ -3,22 +3,25 @@
   flex-direction: column;
   .card-group {
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     width: 90%;
     margin: auto;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     article {
+      width: 100%;
       transition: all 0.1s;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      border-radius: 8px;
+      max-width: 380px;
 
-      .wrap-img {
+      img{
         width: 100%;
-        height: 200px;
         border-radius: 8px;
-        background-size: cover !important;
       }
 
       span {
@@ -26,6 +29,7 @@
         padding: 20px 0;
         margin-left: 30px;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--foreground-color);
 
         p {
           line-height: 1.5;
@@ -53,27 +57,83 @@
     }
   }
 }
-@media only screen and (min-width: 1200px) {
+@media screen and (min-width: 512px) {
   .card-container {
+    flex-direction: column;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    gap: 20px;
+
     .card-group {
       width: 100%;
+      display: flex;
+      align-items: flex-start;
+      margin: 0;
       flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+
+      article {
+        transition: all 0.1s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+
+        img{
+          border-radius: 8px;
+        }
+
+        span {
+          width: 100%;
+          padding: 20px 0;
+          margin-left: 0;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+          p {
+            line-height: 1.5;
+          }
+
+          button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #0067b8;
+            font-weight: 600;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
   }
 }
 @media only screen and (min-width: 1200px) {
   .card-container {
-    width: 90%;
+    width: 95%;
+    max-width: 1630px;
     height: fit-content;
     display: flex;
     margin: auto;
-    max-width: 1630px;
     flex-direction: row;
+    align-items: flex-start;
 
     .card-group {
       width: 50%;
       display: flex;
       justify-content: space-around;
+      flex-direction: row;
+      gap: 20px;
 
       article {
         transition: all 0.1s;
@@ -121,3 +181,29 @@
     }
   }
 }
+
+
+// {
+//   picture: 'assets/resources/cards-pictures/nest-card.svg',
+//   title: 'Nest JS',
+//   descript:
+//     'Hace relativamente poco intente mejorar mi apartado de backend y comenze tomando un curso de Udemy de NestJs.',
+// },
+// {
+//   picture: 'assets/resources/cards-pictures/sp-card.svg',
+//   title: 'Java SpringBoot',
+//   descript:
+//     'En mi cursada actual de Argentina Programa estoy aprendiendo a usar Java y en su defecto Springboot.',
+// },
+// {
+//   picture: 'assets/resources/cards-pictures/next-card.svg',
+//   title: 'Angular',
+//   descript:
+//     'Angular es uno de los primeros framework que aprendi a usar a mediados de 2020, pero aun sigo aprendiendo cosas nuevas, podria decirse que es mi framework principal',
+// },
+// {
+//   picture: 'assets/resources/cards-pictures/react-card.svg',
+//   title: 'React',
+//   descript:
+//     'Con mi conocimiento previo en Angular quise aprender otro framework en donde el Server Side Render sea un poco mas suporteado.',
+// },

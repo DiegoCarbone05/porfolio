@@ -1,7 +1,7 @@
 :root {
-  --color-primary: #ff833c;
+  --color-primary: #1E67D6;
   --color-primary-tint-100: #ff833c85;
-  --color-primary-tint-200: #ff833c21;
+  --color-primary-tint-200: #3c80ff10;
 
   --color-step-50: #1e1e1e;
   --color-step-100: #2a2a2a;
@@ -23,23 +23,52 @@
   --color-step-900: #e7e7e7;
   --color-step-950: #f3f3f3;
   --color-step-1000: #ffffff;
+  --mdc-checkbox-selected-checkmark-color: var(--color-step-1000) !important;
+  --input-background-default: #80808017;
 }
 
 .light {
-  transition: all 0.5s;
   --header-surface: #ffffffb8;
   --body-surface: var(--color-step-1000);
-  --foreground-color: var(--color-step-50);
   --logotype-font-color: var(--color-step-300);
   --header-border-color: #8080802f;
+  --header-hover-tab: var(--color-step-850);
+
   --hero-surface: var(--color-step-950);
+
+  --foreground-color: var(--color-step-50);
+  --on-foreground-color: var(--color-step-1000);
+  --foreground-color-200: var(--color-step-200);
+  --foreground-color-250: var(--color-step-450);
+
+  --input-border-default: var(--color-step-650);
+
+  /* Login */
+  --card-login-back:var(--color-step-950);
+  --login-blur-background:#ffffff96;
+  --login-background:url("../assets/resources/pictures/macOS-Monterey-wallpaper-idownloadblog-mattbirchler-variant-2-blue-green-min.webp");
+
 }
 .dark {
-  transition: all 0.5s;
   --header-surface: #161616cc;
   --body-surface: var(--color-step-50);
-  --foreground-color: var(--color-step-1000);
   --logotype-font-color: var(--color-step-1000);
   --header-border-color: #3535352f;
   --hero-surface: var(--color-step-200);
+  --header-hover-tab: var(--color-step-250);
+
+  --foreground-color: var(--color-step-1000);
+  --on-foreground-color: var(--color-step-50);
+  --foreground-color-200: var(--color-step-750);
+  --foreground-color-250: var(--color-step-700);
+
+  --input-border-default: var(--color-step-650);
+  --input-border-default-200: var(--color-step-350);
+
+  /* Login */
+  --card-login-back:var(--color-step-50);
+  --login-blur-background:#000000b9;
+  --login-background:url("../assets/resources/pictures/macOS-Monterey-wallpaper-idownloadblog-mattbirchler-variant-2-blue-green-dark-min.webp");
+
+
 }

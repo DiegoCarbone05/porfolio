@@ -16,6 +16,7 @@ main {
     margin: auto;
     display: flex;
     flex-direction: column;
+    color: var(--foreground-color);
 
     h1 {
       font-family: "Product Sans Thin Regular";
