@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PagesComponent } from './pages.component';
+import { HabilityComponent } from './hability/hability.component';
 
 
 @NgModule({
@@ -13,11 +14,12 @@ import { PagesComponent } from './pages.component';
     HomeComponent,
     AboutComponent,
     PagesComponent,
+    HabilityComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class PagesModule { }

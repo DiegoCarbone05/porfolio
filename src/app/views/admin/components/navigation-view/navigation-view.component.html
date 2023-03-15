@@ -1,0 +1,41 @@
+<nav>
+  <div class="wrap">
+    <button
+      (click)="asideStatus = !asideStatus"
+      class="nav-btn win-icon win-icon-GlobalNavButton"
+    ></button>
+    <p>INICIO</p>
+  </div>
+  <div class="wrap">
+    <button class="nav-btn win-icon win-icon-Settings"></button>
+  </div>
+</nav>
+<aside [class.opened]="asideStatus">
+  <div class="aside-header">
+    <p class="menu">MENU</p>
+  </div>
+
+  <div class="aside-item" (click)="routerButton('/admin/dashboard')">
+    <div class="wrap-icon win-icon win-icon-Home"></div>
+    <p class="nav-text">Inicio</p>
+    <div routerLink="/admin/dashboard" routerLinkActive="pipe"></div>
+  </div>
+  <div class="aside-item" (click)="routerButton('/admin/startPage')">
+    <div class="wrap-icon win-icon win-icon-Globe"></div>
+    <p class="nav-text">Pagina principal</p>
+    <div routerLink="/admin/startPage"routerLinkActive="pipe"></div>
+  </div>
+  <div class="aside-item" (click)="routerButton('aboutPage')">
+    <div class="wrap-icon win-icon win-icon-Diagnostic"></div>
+    <p class="nav-text">Sobre mi</p>
+    <div routerLink="/admin/aboutPage"routerLinkActive="pipe"></div>
+  </div>
+  <div class="aside-item" (click)="routerButton('skillsPage')">
+    <div class="wrap-icon win-icon win-icon-ContactInfo"></div>
+    <p class="nav-text">Habilidades</p>
+    <div routerLink="/admin/skillsPage" routerLinkActive="pipe"></div>
+  </div>
+</aside>
+<div class="content">
+  <ng-content></ng-content>
+</div>

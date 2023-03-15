@@ -1,0 +1,33 @@
+<app-navigation-view>
+  <router-outlet></router-outlet>
+</app-navigation-view>
+
+<div class="wrap-desktop">
+  <div class="nav-bar">
+    <div class="wrap">
+      <button mat-icon-button (click)="redirectTo('')">
+        <mat-icon class="material-symbols-rounded material-symbols-fill">home</mat-icon>
+      </button>
+      <p>Carbone Admin</p>
+    </div>
+    <div
+      class="wrap"
+      mat-tab-nav-bar
+    >
+      <button
+      class="tabs"
+        mat-tab-link
+        *ngFor="let item of links"
+        (click)="redirectTo(item.path)"
+        [active]="activeLink == item.path"
+      >
+        {{ item.label }}
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <br>
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

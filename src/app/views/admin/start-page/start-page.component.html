@@ -1,0 +1,27 @@
+<div class="wrap-start-page">
+
+  <p class="title">VISTA PREVIA</p>
+  <div class="hero-container">
+    <div class="hero">
+      <app-hero [heroData]="heroData"></app-hero>
+    </div>
+  </div>
+  <br>
+  <div class="input-container">
+    <span>
+      <p class="input-text">Primer texto</p>
+      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.firstText" />
+    </span>
+    <span>
+      <p class="input-text">Segundo texto</p>
+      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.secondText" />
+    </span>
+    <span>
+      <p class="input-text">Tercer texto</p>
+      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.thirdText" />
+    </span>
+  </div>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
+</div>

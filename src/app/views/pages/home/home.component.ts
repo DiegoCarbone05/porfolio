@@ -1,5 +1,6 @@
 import { ICard } from './../../../shared/card/card.component';
 import { Component } from '@angular/core';
+import { IHero } from 'src/app/shared/hero/hero.component';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+
+
+  heroData:IHero = {
+    firstText:'Hola',
+    secondText:'Soy Diego Carbone',
+    thirdText:'Full Stack Developer',
+  }
+
+
   cardData: ICard[] = [
     {
       picture: 'assets/resources/cards-pictures/nest-card.svg',

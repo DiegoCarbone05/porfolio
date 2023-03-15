@@ -11,12 +11,10 @@ export class AppComponent {
   title = 'diego-carbone-pf';
   spinnerStatus: boolean = true;
   constructor(private router: Router, private utilsSvc: UtilsService) {
-
-
     if(localStorage.getItem('theme')){
       setTimeout(()=>{
         this.spinnerStatus = false
-      }, 0)
+      }, 500)
     }
   }
 

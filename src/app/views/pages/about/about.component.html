@@ -10,17 +10,8 @@
   </div>
   <span>
     <h1>Sobre mi</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dicta
-      commodi quod, et modi perspiciatis. Veritatis possimus maiores rerum,
-      fugit sapiente hic quaerat. Nobis repudiandae cumque, corporis ipsum
-      dolor est!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dicta
-      commodi quod, et modi perspiciatis. Veritatis possimus maiores rerum,
-      fugit sapiente hic quaerat. Nobis repudiandae cumque, corporis ipsum
-      dolor est!
+    <p *ngFor="let item of aboutContent">
+      {{item.paragraph}}
     </p>
   </span>
 </main>

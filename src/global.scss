@@ -2,6 +2,7 @@
 @import './css/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('css/segoe-mdl2-icon.css');
 
 
 .material-symbols-rounded {
@@ -11,6 +12,8 @@
   'GRAD' 0,
   'opsz' 48
 }
+
+
 .material-symbols-fill {
   font-variation-settings:
   'FILL' 1,
@@ -22,16 +25,20 @@
   margin: 0 auto 0 auto;
   max-width: 2000px;
 }
+.not-overflow{
+  overflow: hidden;
+}
+
 
 @keyframes startAnimation {
   0% {
     opacity: 0;
-    transform: translateY(25px);
-  transition: all 1s;
+    transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0, 1.02, 0, 1.01) !important;
 }
   100% {
     opacity: 1;
     transform: translateY(0px);
-  transition: all 1s;
+  transition: all 0.5s cubic-bezier(0, 1.02, 0, 1.01) !important;
 }
 }

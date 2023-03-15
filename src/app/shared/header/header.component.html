@@ -11,9 +11,19 @@
           <button
             *ngFor="let item of navItems"
             class="tab-button"
+
+
             [routerLink]="item.path"
             routerLinkActive="selected"
+
+
           >
+
+            <mat-icon
+              class="material-symbols-rounded"
+              routerLinkActive="material-symbols-fill"
+              >{{item.icon}}</mat-icon
+            >
             {{ item.text }}
           </button>
         </div>
@@ -30,7 +40,10 @@
               darkMode ? "brightness_4" : "brightness_7"
             }}</mat-icon>
           </button>
-          <button mat-icon-button (click)="goToAuth()">
+          <button *ngIf="isLogged" mat-icon-button (click)="openAdmin()">
+            <mat-icon>admin_panel_settings</mat-icon>
+          </button>
+          <button *ngIf="!isLogged" mat-icon-button (click)="goToAuth()">
             <mat-icon>person</mat-icon>
           </button>
         </div>
@@ -40,7 +53,11 @@
   <header class="mobile">
     <div class="hr-contnet">
       <div class="wrap">
-        <button mat-icon-button>
+        <button
+          mat-icon-button
+          class="menu-btn"
+          (click)="changeSidenavStatus()"
+        >
           <mat-icon class="mat-18">menu</mat-icon>
         </button>
       </div>
@@ -55,13 +72,47 @@
             darkMode ? "brightness_4" : "brightness_7"
           }}</mat-icon>
         </button>
-        <button mat-icon-button (click)="goToAuth()">
+        <button *ngIf="isLogged" mat-icon-button (click)="openAdmin()">
+          <mat-icon class="mat-18">admin_panel_settings</mat-icon>
+        </button>
+        <button *ngIf="!isLogged" mat-icon-button (click)="goToAuth()">
           <mat-icon class="mat-18">person</mat-icon>
         </button>
       </div>
     </div>
   </header>
   <div class="pseudonav"></div>
+
+  <aside [class.sidenav-opened]="sidenavStatus">
+    <div class="wrap-sidenav">
+      <div class="sidenav-header">
+        <button
+          mat-icon-button
+          class="menu-btn"
+          (click)="changeSidenavStatus()"
+        >
+          <mat-icon class="material-symbols-rounded">menu</mat-icon>
+        </button>
+        <p>MENU</p>
+      </div>
+      <div class="sidenav-items">
+        <button
+          mat-ripple
+          class="nav-btn"
+          *ngFor="let item of navItems"
+          (click)="redirectTo(item.path)"
+        >
+          <mat-icon
+            class="material-symbols-rounded"
+            [routerLink]="item.path"
+            routerLinkActive="material-symbols-fill"
+            >{{ item.icon }}</mat-icon
+          >
+          <p>{{ item.text }}</p>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <div class="content">
     <ng-content></ng-content>
