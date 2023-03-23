@@ -1,8 +1,99 @@
-<app-navigation-view>
+<!-- <app-navigation-view>
   <router-outlet></router-outlet>
-</app-navigation-view>
+</app-navigation-view> -->
+<main>
+  <mat-toolbar>
+    <button
+      (click)="sidenavStatus = !sidenavStatus"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <p class="logo-title">Carbone <span>Admin</span></p>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-drawer-container class="example-container">
+    <mat-drawer [mode]="drawerMode" [opened]="sidenavStatus">
+      <div class="flex-item-container">
+        <mat-list role="list">
+          <mat-list-item
+            [routerLink]="item.path"
+            routerLinkActive="item-selected"
+            matRipple
+            role="listitem"
+            *ngFor="let item of sidenavItems.start"
+            (click)="redirectTo(item.parentRouter + item.path)"
+          >
+            <span>
+              <mat-icon
+                class="material-symbols-rounded"
+                routerLinkActive="material-symbols-fill"
+                >{{ item.icon }}</mat-icon
+              >
+              {{ item.text }}
+            </span>
+          </mat-list-item>
+        </mat-list>
 
-<div class="wrap-desktop">
+        <mat-list role="list">
+          <mat-list-item
+            matRipple
+            role="listitem"
+            (click)="logout()"
+          >
+            <span>
+              <mat-icon
+                class="material-symbols-rounded"
+                routerLinkActive="material-symbols-fill"
+                >logout</mat-icon
+              >
+              Cerrar sesión
+            </span>
+          </mat-list-item>
+          <mat-list-item
+            [routerLink]="item.path"
+            routerLinkActive="item-selected"
+            matRipple
+            role="listitem"
+            *ngFor="let item of sidenavItems.end"
+            (click)="redirectTo(item.parentRouter + item.path)"
+          >
+            <span>
+              <mat-icon
+                class="material-symbols-rounded"
+                routerLinkActive="material-symbols-fill"
+                >{{ item.icon }}</mat-icon
+              >
+              {{ item.text }}
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</main>
+
+<!-- <div class="wrap-desktop">
+
   <div class="nav-bar">
     <div class="wrap">
       <button mat-icon-button (click)="redirectTo('')">
@@ -30,4 +121,4 @@
     <router-outlet></router-outlet>
 
   </div>
-</div>
+</div> -->

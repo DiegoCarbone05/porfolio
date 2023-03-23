@@ -1,0 +1,39 @@
+.dialog-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: unset !important;
+    letter-spacing: unset !important;
+    max-width: 300px;
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+    color: var(--foreground-color);
+  }
+  .content {
+    font: unset;
+    line-height: unset;
+    letter-spacing: unset;
+    max-width: 300px;
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+  }
+  .buttons {
+    padding: 0;
+    display: flex;
+    justify-content: right;
+
+    button {
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+
+      &.primary {
+        color: white;
+      }
+    }
+  }
+}

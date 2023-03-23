@@ -7,6 +7,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { StartPageComponent } from './start-page/start-page.component';
     DashboardComponent,
     AdminComponent,
     NavigationViewComponent,
-    StartPageComponent
+    StartPageComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,

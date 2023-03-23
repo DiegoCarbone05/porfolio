@@ -7,60 +7,8 @@ p{
   display: flex;
   flex-direction: column;
 
-  .header-list{
-    width: 95%;
-    height: 48px;
-    margin: auto;
-    margin-top: 10px;
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    max-width: 1200px;
-
-    .content{
-      background-color: var(--card-login-back);
-      width: calc(100% - 52px);
-      height: 100%;
-      padding-left: 16px;
-      box-sizing: border-box;
-      font-weight: 700;
-    }
-
-    button{
-      width: 48px;
-      height: 48px;
-      border: none;
-      background: #EB4910;
-      color: white;
-      font-size: 16px;
-    }
+  table{
+    background: none;
   }
 
-  .wrap-list{
-    width: 95%;
-    background-color: var(--card-login-back);
-    margin: auto;
-    margin-top: 4px;
-    max-width: 1200px;
-
-    ul{
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li{
-        height: 48px;
-        border-bottom: 1px solid var(--header-border-color);
-        display: flex;
-        align-items: center;
-        padding: 0 16px;
-        justify-content: space-between;
-
-        p{
-          font-weight: 200;
-        }
-
-      }
-    }
-  }
 }

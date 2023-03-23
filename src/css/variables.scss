@@ -1,6 +1,6 @@
 :root {
   --color-primary: #FF833C;
-  --color-primary-tint-100: #ff833c85;
+  --color-primary-tint-100: #ff833c72;
   --color-primary-tint-200: #ff833c18;
 
   --color-step-0: #000000;
@@ -29,6 +29,7 @@
 }
 
 .light {
+  --color-primary-font: #FF833C;
   --header-surface: #ffffffb8;
   --body-surface: var(--color-step-1000);
   --logotype-font-color: var(--color-step-400);
@@ -52,9 +53,10 @@
   --card-login-back:var(--color-step-950);
   --login-blur-background:#ffffff96;
   --login-background:url("../assets/resources/pictures/macOS-Monterey-wallpaper-idownloadblog-mattbirchler-variant-2-blue-green-min.webp");
-
+  --admin-background:#fafafa;
 }
 .dark {
+  --color-primary-font: #ffc5a4;
   --header-surface: #161616cc;
   --body-surface: var(--color-step-50);
   --logotype-font-color: var(--color-step-1000);
@@ -78,6 +80,7 @@
   --card-login-back:var(--color-step-50);
   --login-blur-background:#000000b9;
   --login-background:url("../assets/resources/pictures/macOS-Monterey-wallpaper-idownloadblog-mattbirchler-variant-2-blue-green-dark-min.webp");
+  --admin-background:#303030;
 
 
 }

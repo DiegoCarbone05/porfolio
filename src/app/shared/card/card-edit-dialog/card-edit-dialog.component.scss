@@ -1,0 +1,111 @@
+mat-form-field {
+  width: 100vw;
+  max-width: 100%;
+}
+img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px dashed white;
+}
+.dialog-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 25px;
+    margin: 0;
+    color: var(--foreground-color);
+  }
+
+  .wrap article{
+    display: none;
+  }
+
+  .warp-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+    gap: 12px;
+
+    button {
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+
+      &.primary {
+        color: white;
+      }
+    }
+  }
+}
+@media screen and (min-width: 940px) {
+  mat-form-field {
+    width: 100%;
+  }
+  .mobile-preview-image {
+    display: none;
+  }
+  .content {
+    display: flex;
+    gap: 40px;
+
+    .wrap {
+      width: 100%;
+      max-width: 380px;
+      article {
+        width: 100%;
+        transition: all 0.1s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        max-width: 380px;
+
+        .edit-button {
+          width: 10;
+        }
+
+        img {
+          width: 100%;
+          border-radius: 8px;
+          border: none;
+        }
+
+        span {
+          width: 80%;
+          padding: 20px 0;
+          margin-left: 30px;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          color: var(--foreground-color);
+
+          p {
+            line-height: 1.5;
+          }
+
+          button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #0067b8;
+            font-weight: 600;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

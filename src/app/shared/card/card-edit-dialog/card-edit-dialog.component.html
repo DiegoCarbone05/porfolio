@@ -1,0 +1,63 @@
+<div class="dialog-container">
+  <h2>Editar tarjeta</h2>
+  <br />
+  <img
+    class="mobile-preview-image"
+    [src]="currentData.picture"
+    [alt]="currentData.title"
+  />
+  <br /><br />
+  <div class="content">
+    <form class="wrap" [formGroup]="editCardForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Título de tarjeta</mat-label>
+        <input
+          matInput
+          placeholder="My cart title"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          style="height: 150px"
+          matInput
+          placeholder="My cart description"
+          formControlName="descript"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ruta</mat-label>
+        <input
+          matInput
+          placeholder="Ruta de redireccion"
+          formControlName="path"
+        />
+      </mat-form-field>
+    </form>
+    <div class="wrap">
+      <article mat-ripple>
+        <img [src]="currentData.picture" [alt]="currentData.title" />
+        <span>
+          <h3>{{ currentData.title }}</h3>
+          <p>{{ currentData.descript }}</p>
+          <!-- <button *ngIf="currentData.button">
+            {{ currentData.button }}<mat-icon>chevron_right</mat-icon>
+          </button> -->
+        </span>
+      </article>
+    </div>
+  </div>
+  <div class="warp-buttons">
+    <button
+      class="primary"
+      mat-flat-button
+      color="primary"
+      [mat-dialog-close]="currentData"
+      (click)="submit()"
+    >
+      GUARDAR
+    </button>
+    <button (click)="onNoClick()" class="secondary" mat-button>CANCELAR</button>
+  </div>
+</div>

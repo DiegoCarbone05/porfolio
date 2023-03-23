@@ -11,7 +11,7 @@ const routes: Routes = [
     component:AdminComponent,
     children:[
       {path:'dashboard', component:DashboardComponent},
-      {path:'startPage', component:StartPageComponent}
+      {path:'main-page', component:StartPageComponent}
     ]
   }
 ];

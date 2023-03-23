@@ -1,27 +1,59 @@
 <div class="wrap-start-page">
-
-  <p class="title">VISTA PREVIA</p>
-  <div class="hero-container">
-    <div class="hero">
-      <app-hero [heroData]="heroData"></app-hero>
-    </div>
-  </div>
-  <br>
-  <div class="input-container">
-    <span>
-      <p class="input-text">Primer texto</p>
-      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.firstText" />
-    </span>
-    <span>
-      <p class="input-text">Segundo texto</p>
-      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.secondText" />
-    </span>
-    <span>
-      <p class="input-text">Tercer texto</p>
-      <input type="text" placeholder="Primer texto" [(ngModel)]="heroData.thirdText" />
-    </span>
-  </div>
-  <br><br><br>
-  <br><br><br>
-  <br><br><br>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight>
+    <mat-tab label="Hero princpial">
+      <div class="outline"></div>
+      <br /><br />
+      <div class="input-container">
+        <span>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Primer texto</mat-label>
+            <input
+              matInput
+              placeholder="text"
+              [(ngModel)]="heroData.firstText"
+            />
+          </mat-form-field>
+        </span>
+        <span>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Segundo texto</mat-label>
+            <input
+              matInput
+              placeholder="text"
+              [(ngModel)]="heroData.secondText"
+            />
+          </mat-form-field>
+        </span>
+        <span>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Primer texto</mat-label>
+            <input
+              matInput
+              placeholder="text"
+              [(ngModel)]="heroData.thirdText"
+            />
+          </mat-form-field>
+        </span>
+      </div>
+      <div class="hero-container">
+        <div class="hero">
+          <app-hero [heroData]="heroData"></app-hero>
+        </div>
+      </div>
+      <br />
+    </mat-tab>
+    <mat-tab label="Cards">
+      <div class="outline"></div>
+      <br /><br /><br />
+      <app-card (saveNewCard)="saveDataCard($event)" [editMode]="true" [data]="cardData"></app-card>
+    </mat-tab>
+    <mat-tab label="Hero secundario">
+      <div class="outline"></div>
+      Content 3
+    </mat-tab>
+    <mat-tab label="Footer">
+      <div class="outline"></div>
+      Content 3
+    </mat-tab>
+  </mat-tab-group>
 </div>
