@@ -1,1 +1,40 @@
+.wrap-skills {
+  width: 90%;
+  margin: auto;
+  max-width: 1600px;
 
+  h2 {
+    color: var(--foreground-color);
+  }
+
+  .wrap-skill-card {
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: var(--card-login-back);
+    border: 1px solid var(--card-login-back);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s;
+
+    p {
+      margin: 0;
+      color: var(--foreground-color);
+    }
+
+    .app-name {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .desc {
+      line-height: 1.4;
+    }
+
+    &:hover {
+      border: 1px solid var(--color-primary);
+      transition: all 0.2s;
+    }
+  }
+}

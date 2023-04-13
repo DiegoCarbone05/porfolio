@@ -1,0 +1,14 @@
+<form class="example-form" [formGroup]="aboutMeContent">
+  <mat-form-field class="example-full-width">
+    <mat-label>Titulo</mat-label>
+    <input formControlName="title" matInput placeholder="Inserte Titulo">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" >
+    <mat-label>Descripcion</mat-label>
+    <textarea formControlName="descript" style="height: 300px; max-height: 70vh;" matInput placeholder="Inserte descripción"></textarea>
+  </mat-form-field>
+</form>
+<button (click)="saveDataAbout()" mat-fab color="primary" class="save-button">
+  <mat-icon>save</mat-icon>
+</button>

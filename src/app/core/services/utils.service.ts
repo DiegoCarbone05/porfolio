@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UtilsService {
+
+  public $darkMode = new BehaviorSubject<boolean>(false)
+
   constructor() {
     this.checkTheme()
   }
@@ -15,15 +19,19 @@ export class UtilsService {
         case 'light':
           document.body.classList.remove('dark');
           document.body.classList.add('light');
+          this.$darkMode.next(false)
           break;
 
         case 'dark':
           document.body.classList.remove('light');
           document.body.classList.add('dark');
+          this.$darkMode.next(true)
           break;
       }
     } else {
       document.body.classList.add('light');
+      this.$darkMode.next(false)
+
     localStorage.setItem('theme', 'light');
   }
   }

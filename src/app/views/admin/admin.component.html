@@ -1,32 +1,20 @@
-<!-- <app-navigation-view>
-  <router-outlet></router-outlet>
-</app-navigation-view> -->
 <main>
   <mat-toolbar>
     <button
       (click)="sidenavStatus = !sidenavStatus"
       mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
+      *ngIf="menuButtonVisibility"
     >
       <mat-icon>menu</mat-icon>
     </button>
+    <button
+      (click)="returnUrl()"
+      mat-icon-button
+      *ngIf="!menuButtonVisibility"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
     <p class="logo-title">Carbone <span>Admin</span></p>
-    <span class="example-spacer"></span>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-    >
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-    >
-      <mat-icon>share</mat-icon>
-    </button>
   </mat-toolbar>
   <mat-drawer-container class="example-container">
     <mat-drawer [mode]="drawerMode" [opened]="sidenavStatus">
@@ -52,11 +40,7 @@
         </mat-list>
 
         <mat-list role="list">
-          <mat-list-item
-            matRipple
-            role="listitem"
-            (click)="logout()"
-          >
+          <mat-list-item matRipple role="listitem" (click)="logout()">
             <span>
               <mat-icon
                 class="material-symbols-rounded"
@@ -91,34 +75,3 @@
     </mat-drawer-content>
   </mat-drawer-container>
 </main>
-
-<!-- <div class="wrap-desktop">
-
-  <div class="nav-bar">
-    <div class="wrap">
-      <button mat-icon-button (click)="redirectTo('')">
-        <mat-icon class="material-symbols-rounded material-symbols-fill">home</mat-icon>
-      </button>
-      <p>Carbone Admin</p>
-    </div>
-    <div
-      class="wrap"
-      mat-tab-nav-bar
-    >
-      <button
-      class="tabs"
-        mat-tab-link
-        *ngFor="let item of links"
-        (click)="redirectTo(item.path)"
-        [active]="activeLink == item.path"
-      >
-        {{ item.label }}
-      </button>
-    </div>
-  </div>
-  <div class="content">
-    <br>
-    <router-outlet></router-outlet>
-
-  </div>
-</div> -->

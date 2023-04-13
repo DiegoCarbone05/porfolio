@@ -1,0 +1,17 @@
+.wrap-group-skill-item {
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--card-login-back);
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+
+  .name {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 500;
+  }
+}

@@ -1,6 +1,8 @@
+import { IDinamicHero } from './../../../shared/dinamic-hero/dinamic-hero.component';
 import { ICard } from './../../../shared/card/card.component';
 import { Component } from '@angular/core';
 import { IHero } from 'src/app/shared/hero/hero.component';
+import { ConfigurationFacade } from 'src/app/core/facade/configuration.facade';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +10,11 @@ import { IHero } from 'src/app/shared/hero/hero.component';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-
-
   heroData:IHero = {
-    firstText:'Hola',
-    secondText:'Soy Diego Carbone',
-    thirdText:'Full Stack Developer',
+    firstText:'',
+    secondText:'',
+    thirdText:'',
   }
-
 
   cardData: ICard[] = [
     {
@@ -47,4 +46,32 @@ export class HomeComponent {
         'Con mi conocimiento previo en Angular quise aprender otro framework en donde el Server Side Render sea un poco mas suporteado.',
     },
   ];
+
+  dinamicHeroData: IDinamicHero = {
+    secction:'',
+    title:'Diseño de logos e interfaces',
+    desc:'En este sector aparecera todo mi conocimiento relacionado con el diseño de logos, interfaces, modelado 3D, etc.',
+    buttons: [
+      {path:'', content:'Ver Mas'},
+    ],
+    baseImg:'assets/resources/hero-pictures/ganudesign-banner-mobile.png',
+    pictures:[
+      {srcset:'assets/resources/hero-pictures/ganudesign-banner.png', media:'(min-width: 768px)'}
+    ]
+  }
+
+  constructor(private configurationFacade:ConfigurationFacade){
+    this.configurationFacade.getAll().subscribe(res =>{
+      const [first, second, third] = res;
+
+      this.heroData = {
+        firstText: first.value,
+        secondText: second.value,
+        thirdText: third.value,
+      };
+    })
+  }
+
+
 }
+

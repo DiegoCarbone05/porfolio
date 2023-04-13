@@ -1,17 +1,38 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  constructor(private router: Router, private authSvc: AuthService) {}
 
-  constructor(private router:Router){}
+  showPassword: boolean = false;
+  saveAccount: boolean = false;
 
-  loggin(){
-    localStorage.setItem('auth', 'true')
-    this.router.navigateByUrl('/')
+  aboutMeContent = new FormGroup({
+    mail: new FormControl(),
+    password: new FormControl(),
+    savePassword: new FormControl(),
+  });
+
+  ngOnInit(): void {
+    this.aboutMeContent.valueChanges.subscribe((data) => {
+      this.showPassword = data.savePassword;
+      console.log('data.savePassword');
+    });
+  }
+
+  loggin() {
+    this.authSvc.login({
+      mail: this.aboutMeContent.value.mail,
+      password: this.aboutMeContent.value.password,
+      savePassword: this.saveAccount,
+    });
+    this.router.navigateByUrl('/');
   }
 }

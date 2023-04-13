@@ -1,15 +1,28 @@
-<div class="wrap-hero">
+<div class="wrap-hero" *ngIf="dinamicHeroData">
   <picture>
-    <source srcset="assets/resources/hero-pictures/ganudesign-banner.png" media="(min-width: 768px)">
-    <img src="assets/resources/hero-pictures/ganudesign-banner-mobile.png" alt="">
+    <source
+      *ngFor="let pictures of dinamicHeroData.pictures"
+      [srcset]="pictures.srcset"
+      [media]="pictures.media"
+    />
+    <img
+      [src]="dinamicHeroData.baseImg"
+    />
   </picture>
   <div class="content">
     <span>
-      <!-- <p>Apartado de diseños</p> -->
-      <h1>Diseño de logos e interfaces</h1>
-      <p class="descript-text">En este sector aparecera todo mi conocimiento relacionado con el diseño de logos, interfaces, modelado 3D, etc.</p>
-      <br>
-      <button class="primary" mat-ripple matRippleColor="#FFFFFF15">Ver mas</button>
+      <p>{{ dinamicHeroData.secction }}</p>
+      <h1>{{ dinamicHeroData.title }}</h1>
+      <p class="descript-text">{{ dinamicHeroData.desc }}</p>
+      <br />
+      <button
+        *ngFor="let button of dinamicHeroData.buttons"
+        class="primary"
+        mat-ripple
+        matRippleColor="#FFFFFF15"
+      >
+        {{ button.content }}
+      </button>
     </span>
   </div>
 </div>

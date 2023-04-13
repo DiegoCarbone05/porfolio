@@ -1,0 +1,33 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="over" position="end">
+    <div class="header">
+      <span>
+        <mat-icon class="mat-18">edit</mat-icon>
+        <p>Editar skill</p>
+      </span>
+      <button mat-icon-button color="primary" (click)="drawer.opened = false">
+          <mat-icon class="mat-18">close</mat-icon>
+      </button>
+    </div>
+    <div class="edit-add-skill-container">
+      <form>
+        <mat-form-field appearance="outline">
+          <mat-label>Input</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Input</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="wrap-skill-group-visualizer">
+      <app-skill-item *ngFor="let skill of skillItems" [itemSource]="skill" (modifySkill)="drawer.opened = true"></app-skill-item>
+      <button mat-stroked-button class="add-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

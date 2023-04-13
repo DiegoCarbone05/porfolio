@@ -1,5 +1,5 @@
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import {
@@ -7,6 +7,8 @@ import {
   MAT_DIALOG_DATA,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { AuthService } from '../auth/services/auth.service';
+import { UtilsService } from 'src/app/core/services/utils.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +19,7 @@ export class AdminComponent implements OnInit {
   background: ThemePalette = undefined;
   sidenavStatus: boolean = true;
   drawerMode: any = 'side';
+  menuButtonVisibility:boolean = true
   sidenavItems = {
     start: [
       {
@@ -60,8 +63,13 @@ export class AdminComponent implements OnInit {
     ],
   };
 
-  constructor(private router: Router, public dialog: MatDialog) {
-    if (!localStorage.getItem('auth')) {
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private authSvc: AuthService,
+    private utilsSvc: UtilsService
+  ) {
+    if (!this.authSvc.getLoginStatus) {
       this.router.navigateByUrl('');
     }
   }
@@ -71,6 +79,33 @@ export class AdminComponent implements OnInit {
       this.drawerMode = 'over';
       this.sidenavStatus = false;
     }
+
+    this.changeUIByRouter(location.hash)
+
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.changeUIByRouter(event.url)
+      }
+    });
+  }
+
+  changeUIByRouter(path:string){
+    if(path.includes("/skills-group/")){
+      this.menuButtonVisibility = false
+      if(this.sidenavStatus){
+        this.sidenavStatus = false
+      }
+    }else{
+      this.menuButtonVisibility = true
+      if(this.drawerMode == 'side' && !this.sidenavStatus){
+        this.sidenavStatus = true
+      }
+    }
+  }
+
+  returnUrl(){
+    this.router.navigateByUrl("/admin/skills-page");
   }
 
   redirectTo(path: string) {

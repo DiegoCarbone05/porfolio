@@ -81,10 +81,31 @@
             </defs>
           </svg>
         </div>
-        <form>
-          <input type="email" placeholder="Mail" />
-          <input type="password" placeholder="Contraseña" />
-          <mat-checkbox color="primary" class="example-margin"
+        <form [formGroup]="aboutMeContent">
+          <mat-form-field appearance="outline">
+            <mat-label>Mail</mat-label>
+            <input matInput formControlName="mail" type="email" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="{{ showPassword ? 'text' : 'password' }}"
+            />
+            <button
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="showPassword = !showPassword"
+            >
+              <mat-icon>{{
+                showPassword ? "visibility" : "visibility_off"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <mat-checkbox color="primary" (change)="saveAccount = $event.checked"
             >Recordar contraseña</mat-checkbox
           >
           <div class="btn-container">

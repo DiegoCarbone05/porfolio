@@ -1,6 +1,7 @@
 import { UtilsService } from './../../core/services/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/views/auth/services/auth.service';
 
 interface navItem {
   text: string;
@@ -18,8 +19,9 @@ export class HeaderComponent implements OnInit {
   darkMode: boolean = false;
   isLogged: boolean = false;
   sidenavStatus: boolean = false;
+  argentinaProgramaLogoUrl:string = 'assets/resources/logos/SVG/ap-logo-light.svg'
 
-  constructor(private utilsSvc: UtilsService, private router: Router) {
+  constructor(private utilsSvc: UtilsService, private router: Router, private authSvc:AuthService) {
     this.navItems = [
       { text: 'Inicio', path: '/home', icon: 'home' },
       { text: 'Sobre mi', path: '/about', icon: 'person' },
@@ -28,13 +30,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const ls = localStorage.getItem('auth')
-    if (ls) {
-      this.isLogged = true
-    }else{
-      this.isLogged = false
-
-    }
+    this.isLogged = this.authSvc.getLoginStatus
+    this.utilsSvc.$darkMode.subscribe((isDarkMode:boolean)=>{
+      if(isDarkMode){
+        this.argentinaProgramaLogoUrl = 'assets/resources/logos/SVG/ap-logo-dark.svg';
+      }else{
+        this.argentinaProgramaLogoUrl = 'assets/resources/logos/SVG/ap-logo-light.svg';
+      }
+    })
   }
 
   changeTheme() {
@@ -60,11 +63,7 @@ export class HeaderComponent implements OnInit {
 
   changeSidenavStatus() {
     this.sidenavStatus = !this.sidenavStatus;
-    if (this.sidenavStatus) {
-      document.body.classList.add('not-overflow');
-    } else {
-      document.body.classList.remove('not-overflow');
-    }
+
   }
   goToAuth() {
     this.router.navigateByUrl('auth/login');

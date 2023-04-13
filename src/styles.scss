@@ -5,13 +5,15 @@ html,
 body {
   margin: 0;
 }
-
+// .cdk-overlay-pane{
+//   max-width: 100% !important;
+//   height: 100%;
+// }
 html,
 body {
   height: 100%;
 }
 body {
-  background-color: var(--body-surface);
   margin: 0;
   transition: all 0.5s;
   font-family: 'Roboto', sans-serif;
