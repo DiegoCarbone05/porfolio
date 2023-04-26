@@ -40,12 +40,12 @@ export class AdminComponent implements OnInit {
         path: 'about-page',
         parentRouter: 'admin/',
       },
-      {
-        text: 'Pagina de estadisticas',
-        icon: 'monitoring',
-        path: 'skills-page',
-        parentRouter: 'admin/',
-      },
+      // {
+      //   text: 'Pagina de estadisticas',
+      //   icon: 'monitoring',
+      //   path: 'skills-page',
+      //   parentRouter: 'admin/',
+      // },
     ],
     end: [
       {
@@ -69,7 +69,7 @@ export class AdminComponent implements OnInit {
     private authSvc: AuthService,
     private utilsSvc: UtilsService
   ) {
-    if (!this.authSvc.getLoginStatus) {
+    if (!this.authSvc.loginStatus) {
       this.router.navigateByUrl('');
     }
   }

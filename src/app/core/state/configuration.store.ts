@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import { supportsScrollBehavior } from '@angular/cdk/platform';
 import { Configuration } from '../models/configuration';
+import { AuthService } from 'src/app/views/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Configuration } from '../models/configuration';
 export class ConfigurationStore {
   private $configs = new BehaviorSubject<Configuration[]>([]);
 
-  constructor(private apiSvc: ApiService) {}
+  constructor(private apiSvc: ApiService, private authSvc:AuthService) {}
 
   public getAll() {
     return this.$configs.asObservable();
@@ -23,6 +24,7 @@ export class ConfigurationStore {
   }
 
   setConfig(data: Configuration) {
+
     const obs = this.apiSvc.setConfig(data);
     obs.subscribe(() => {
       this.refresh();

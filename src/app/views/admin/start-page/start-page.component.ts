@@ -52,13 +52,21 @@ export class StartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.configFacade.getAll().subscribe((res) => {
-      const [first, second, third] = res;
+      res.forEach((result: Configuration) => {
+        switch (result.name) {
+          case 'banner_top_text':
+            this.heroData.firstText = result.value;
+            break;
 
-      this.heroData = {
-        firstText: first.value,
-        secondText: second.value,
-        thirdText: third.value,
-      };
+          case 'banner_center_text':
+            this.heroData.secondText = result.value;
+            break;
+
+          case 'banner_bottom_text':
+            this.heroData.thirdText = result.value;
+            break;
+        }
+      });
     });
   }
 
@@ -79,7 +87,6 @@ export class StartPageComponent implements OnInit {
         new Configuration('banner_bottom_text', this.heroData.thirdText)
       ),
     ]).subscribe((res) => {
-      console.log(res);
       this.configFacade.refresh();
     });
   }

@@ -1,17 +1,19 @@
 <main>
   <div class="picture-container">
     <picture>
-      <source srcset="assets/resources/hero-pictures/about-banner.png" media="(min-width: 1400px)">
+      <source
+        srcset="assets/resources/hero-pictures/about-banner.png"
+        media="(min-width: 1400px)"
+      />
       <img
         width="100%"
         src="assets/resources/hero-pictures/about-banner-mobile.png"
       />
     </picture>
   </div>
+
   <span>
-    <h1>Sobre mi</h1>
-    <p *ngFor="let item of aboutContent">
-      {{item.paragraph}}
-    </p>
+    <h1>{{ aboutContent.title }}</h1>
+    <pre>{{ aboutContent.paragraph }}</pre>
   </span>
 </main>

@@ -1,33 +1,65 @@
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ConfigurationFacade } from 'src/app/core/facade/configuration.facade';
+import { Configuration } from 'src/app/core/models/configuration';
+import { combineLatest } from 'rxjs';
 
 export interface AboutMeDTO {
-  title:string,
-  descript:string
+  title: string;
+  descript: string;
 }
 
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
-  styleUrls: ['./about-page.component.scss']
+  styleUrls: ['./about-page.component.scss'],
 })
-export class AboutPageComponent {
-  currentAboutMeData!:AboutMeDTO
+export class AboutPageComponent implements OnInit {
+  constructor(private configFacade: ConfigurationFacade) {}
+
+  currentAboutMeData!: AboutMeDTO;
 
   aboutMeContent = new FormGroup({
     title: new FormControl(),
     descript: new FormControl(),
   });
 
-  saveDataAbout(){
-    let tempData = this.currentAboutMeData
+  ngOnInit(): void {
+    this.configFacade.getAll().subscribe((res) => {
+      console.log(res);
 
-    this.currentAboutMeData.title = this.aboutMeContent.value.title;
-    this.currentAboutMeData.descript = this.aboutMeContent.value.descript;
+      res.forEach((result: Configuration) => {
+        switch (result.name) {
+          case 'about_title':
 
-    if(this.currentAboutMeData !== tempData){
-      //send data
-    }
+            this.aboutMeContent.patchValue({
+              title: result.value,
+            });
+
+            break;
+
+          case 'about_descript':
+            this.aboutMeContent.patchValue({
+              descript: result.value,
+            });
+
+
+            break;
+        }
+      });
+    });
   }
 
+  saveDataAbout() {
+    combineLatest([
+      this.configFacade.setConfig(
+        new Configuration('about_title', this.aboutMeContent.value.title || 'empty')
+      ),
+      this.configFacade.setConfig(
+        new Configuration('about_descript', this.aboutMeContent.value.descript || 'empty')
+      ),
+    ]).subscribe((res) => {
+      this.configFacade.refresh();
+    });
+  }
 }

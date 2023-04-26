@@ -1,12 +1,12 @@
 main {
   width: 100%;
 
-  .picture-container{
+  .picture-container {
     width: 100%;
     background-color: var(--hero-surface);
     display: flex;
     justify-content: center;
-    img{
+    img {
       max-width: 530px;
     }
   }
@@ -22,13 +22,14 @@ main {
       font-family: "Product Sans Thin Regular";
     }
 
-    p{
+    pre {
       line-height: 1.5;
       font-size: 18px;
+      overflow-wrap: break-word;
     }
   }
 }
-@media screen and (min-width:768px){
+@media screen and (min-width: 768px) {
   main {
     span {
       padding: 40px 0;
@@ -36,27 +37,27 @@ main {
       h1 {
         font-size: 50px;
       }
-      p{
+      pre {
         font-size: 25px;
       }
     }
   }
 }
-@media screen and (min-width:1400px){
+@media screen and (min-width: 1400px) {
   main {
     height: calc(100vh - 56px);
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
 
-    .picture-container{
+    .picture-container {
       width: 100%;
       background: none;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      img{
+      img {
         max-width: unset;
         width: 100%;
       }
@@ -64,13 +65,14 @@ main {
 
     span {
       padding: 0 100px;
-      width: 75%;
+      width: 100%;
       h1 {
         font-size: 50px;
         margin-top: 0;
       }
-      p{
+      pre {
         font-size: 25px;
+        max-width: 800px;
       }
     }
   }

@@ -3,6 +3,7 @@ import { ICard } from './../../../shared/card/card.component';
 import { Component } from '@angular/core';
 import { IHero } from 'src/app/shared/hero/hero.component';
 import { ConfigurationFacade } from 'src/app/core/facade/configuration.facade';
+import { Configuration } from 'src/app/core/models/configuration';
 
 @Component({
   selector: 'app-home',
@@ -62,13 +63,22 @@ export class HomeComponent {
 
   constructor(private configurationFacade:ConfigurationFacade){
     this.configurationFacade.getAll().subscribe(res =>{
-      const [first, second, third] = res;
 
-      this.heroData = {
-        firstText: first.value,
-        secondText: second.value,
-        thirdText: third.value,
-      };
+      res.forEach((result: Configuration) => {
+        switch (result.name) {
+          case 'banner_top_text':
+            this.heroData.firstText = result.value;
+            break;
+
+          case 'banner_center_text':
+            this.heroData.secondText = result.value;
+            break;
+
+          case 'banner_bottom_text':
+            this.heroData.thirdText = result.value;
+            break;
+        }
+      });
     })
   }
 

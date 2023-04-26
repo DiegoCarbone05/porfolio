@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.aboutMeContent.valueChanges.subscribe((data) => {
       this.showPassword = data.savePassword;
-      console.log('data.savePassword');
     });
   }
 

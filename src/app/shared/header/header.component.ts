@@ -19,25 +19,45 @@ export class HeaderComponent implements OnInit {
   darkMode: boolean = false;
   isLogged: boolean = false;
   sidenavStatus: boolean = false;
-  argentinaProgramaLogoUrl:string = 'assets/resources/logos/SVG/ap-logo-light.svg'
+  argentinaProgramaLogoUrl: string =
+    'assets/resources/logos/SVG/ap-logo-light.svg';
 
-  constructor(private utilsSvc: UtilsService, private router: Router, private authSvc:AuthService) {
+  constructor(
+    private utilsSvc: UtilsService,
+    private router: Router,
+    private authSvc: AuthService
+  ) {
     this.navItems = [
       { text: 'Inicio', path: '/home', icon: 'home' },
       { text: 'Sobre mi', path: '/about', icon: 'person' },
-      { text: 'Habilidades', path: '/skills', icon: 'query_stats' },
+      // { text: 'Habilidades', path: '/skills', icon: 'query_stats' },
     ];
   }
 
   ngOnInit(): void {
-    this.isLogged = this.authSvc.getLoginStatus
-    this.utilsSvc.$darkMode.subscribe((isDarkMode:boolean)=>{
-      if(isDarkMode){
-        this.argentinaProgramaLogoUrl = 'assets/resources/logos/SVG/ap-logo-dark.svg';
-      }else{
-        this.argentinaProgramaLogoUrl = 'assets/resources/logos/SVG/ap-logo-light.svg';
+    this.authSvc.verifyToken()?.subscribe({
+      next: () => {
+        console.log('Autenticacion correcta');
+        this.authSvc.loginStatus = true;
+        this.isLogged = this.authSvc.loginStatus;
+      },
+      error: (err) => {
+        console.log('Autenticacion correcta');
+        localStorage.removeItem('auth');
+        this.authSvc.loginStatus = true;
+        this.isLogged = this.authSvc.loginStatus;
+      },
+    });
+
+    this.utilsSvc.$darkMode.subscribe((isDarkMode: boolean) => {
+      if (isDarkMode) {
+        this.argentinaProgramaLogoUrl =
+          'assets/resources/logos/SVG/ap-logo-dark.svg';
+      } else {
+        this.argentinaProgramaLogoUrl =
+          'assets/resources/logos/SVG/ap-logo-light.svg';
       }
-    })
+    });
   }
 
   changeTheme() {
@@ -63,7 +83,6 @@ export class HeaderComponent implements OnInit {
 
   changeSidenavStatus() {
     this.sidenavStatus = !this.sidenavStatus;
-
   }
   goToAuth() {
     this.router.navigateByUrl('auth/login');
