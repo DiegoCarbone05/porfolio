@@ -1,3 +1,4 @@
+
 <main>
   <header class="desk">
     <div class="hr-contnet">
@@ -36,10 +37,10 @@
               darkMode ? "brightness_4" : "brightness_7"
             }}</mat-icon>
           </button>
-          <button *ngIf="isLogged" mat-icon-button (click)="openAdmin()">
+          <button *ngIf="authSvc.loginStatus | async" mat-icon-button (click)="openAdmin()">
             <mat-icon>admin_panel_settings</mat-icon>
           </button>
-          <button *ngIf="!isLogged" mat-icon-button (click)="goToAuth()">
+          <button *ngIf="!(authSvc.loginStatus | async)" mat-icon-button (click)="goToAuth()">
             <mat-icon>person</mat-icon>
           </button>
         </div>
@@ -69,10 +70,10 @@
             darkMode ? "brightness_4" : "brightness_7"
           }}</mat-icon>
         </button>
-        <button *ngIf="isLogged" mat-icon-button (click)="openAdmin()">
+        <button *ngIf="authSvc.loginStatus | async" mat-icon-button (click)="openAdmin()">
           <mat-icon class="mat-18">admin_panel_settings</mat-icon>
         </button>
-        <button *ngIf="!isLogged" mat-icon-button (click)="goToAuth()">
+        <button *ngIf="!(authSvc.loginStatus | async)" mat-icon-button (click)="goToAuth()">
           <mat-icon class="mat-18">person</mat-icon>
         </button>
       </div>

@@ -1,3 +1,4 @@
+import { CardsFacade } from './../../core/facade/cards.facade';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { NavigationStart, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,7 @@ export class AdminComponent implements OnInit {
   background: ThemePalette = undefined;
   sidenavStatus: boolean = true;
   drawerMode: any = 'side';
-  menuButtonVisibility:boolean = true
+  menuButtonVisibility: boolean = true;
   sidenavItems = {
     start: [
       {
@@ -49,16 +50,16 @@ export class AdminComponent implements OnInit {
     ],
     end: [
       {
+        text: 'Ripple :D',
+        icon: 'drag_click',
+        path: 'settings',
+        parentRouter: 'admin/',
+      },
+      {
         text: 'Regresar al inicio',
         icon: 'keyboard_return',
         path: '/#/',
         parentRouter: '',
-      },
-      {
-        text: 'Configuracion',
-        icon: 'settings',
-        path: 'settings',
-        parentRouter: 'admin/',
       },
     ],
   };
@@ -67,45 +68,50 @@ export class AdminComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private authSvc: AuthService,
-    private utilsSvc: UtilsService
+    private utilsSvc: UtilsService,
+    private CardsFacade: CardsFacade
   ) {
-    if (!this.authSvc.loginStatus) {
-      this.router.navigateByUrl('');
-    }
+    this.authSvc.loginStatus.subscribe((res)=>{
+      if (!res) {
+        this.router.navigateByUrl('');
+      }
+    })
   }
 
   ngOnInit(): void {
+    //Refresh Observers
+    this.CardsFacade.refresh();
+
     if (window.innerWidth <= 1300) {
       this.drawerMode = 'over';
       this.sidenavStatus = false;
     }
 
-    this.changeUIByRouter(location.hash)
-
+    this.changeUIByRouter(location.hash);
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.changeUIByRouter(event.url)
+        this.changeUIByRouter(event.url);
       }
     });
   }
 
-  changeUIByRouter(path:string){
-    if(path.includes("/skills-group/")){
-      this.menuButtonVisibility = false
-      if(this.sidenavStatus){
-        this.sidenavStatus = false
+  changeUIByRouter(path: string) {
+    if (path.includes('/skills-group/')) {
+      this.menuButtonVisibility = false;
+      if (this.sidenavStatus) {
+        this.sidenavStatus = false;
       }
-    }else{
-      this.menuButtonVisibility = true
-      if(this.drawerMode == 'side' && !this.sidenavStatus){
-        this.sidenavStatus = true
+    } else {
+      this.menuButtonVisibility = true;
+      if (this.drawerMode == 'side' && !this.sidenavStatus) {
+        this.sidenavStatus = true;
       }
     }
   }
 
-  returnUrl(){
-    this.router.navigateByUrl("/admin/skills-page");
+  returnUrl() {
+    this.router.navigateByUrl('/admin/skills-page');
   }
 
   redirectTo(path: string) {

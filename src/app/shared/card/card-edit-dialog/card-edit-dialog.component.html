@@ -23,14 +23,13 @@
           style="height: 150px"
           matInput
           placeholder="My cart description"
-          formControlName="descript"
+          formControlName="desc"
         ></textarea>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Ruta</mat-label>
         <input
           matInput
-          placeholder="Ruta de redireccion"
           formControlName="path"
         />
       </mat-form-field>
@@ -40,7 +39,7 @@
         <img [src]="currentData.picture" [alt]="currentData.title" />
         <span>
           <h3>{{ currentData.title }}</h3>
-          <p>{{ currentData.descript }}</p>
+          <p>{{ currentData.desc }}</p>
           <!-- <button *ngIf="currentData.button">
             {{ currentData.button }}<mat-icon>chevron_right</mat-icon>
           </button> -->

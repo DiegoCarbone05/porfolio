@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { LoginDto } from 'src/app/core/Dto/login-dto';
 import { ApiService } from 'src/app/core/api/api.service';
@@ -9,7 +10,7 @@ export class AuthService {
   constructor(private apiSvc: ApiService) {}
 
   public accessToken: string = '';
-  loginStatus!: boolean;
+  loginStatus = new BehaviorSubject<boolean>(false);
 
   private credentialsUser = {
     mail: 'diegocarbone22@gmail.com',
@@ -28,9 +29,9 @@ export class AuthService {
     let melisa = { email: email, password: password };
 
     if (melisa) {
-      this.loginStatus = true;
+      this.loginStatus.next(true);
     } else {
-      this.loginStatus = false;
+      this.loginStatus.next(false);
     }
     return this.apiSvc.login(melisa);
   }
@@ -38,12 +39,15 @@ export class AuthService {
   public login(credentials: LoginDto) {
     const { mail, password, savePassword } = credentials;
 
-    this.verifyCredentials(mail, password).subscribe((token) => {
+    return this.verifyCredentials(mail, password).subscribe((token) => {
       this.accessToken = token.token;
 
       if (savePassword && token) {
         localStorage.setItem('auth', this.accessToken);
       }
+
+
+
     });
   }
 }

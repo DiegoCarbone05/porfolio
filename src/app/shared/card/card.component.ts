@@ -5,10 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Output, EventEmitter } from '@angular/core';
 
 export interface ICard {
-  index: number;
+  id: number;
   picture: string;
   title: string;
-  descript: string;
+  desc: string;
   path?: string;
 }
 
@@ -22,12 +22,13 @@ export class CardComponent implements OnInit {
   @Input() editMode!: boolean;
   @Output() saveNewCard = new EventEmitter<ICard[]>();
 
-  currentData!: ICard[];
+  cards!: ICard[];
 
   constructor(public router: Router, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.currentData = this.data;
+    this.cards = this.data;
+
   }
 
   editCard(index: number) {
@@ -37,21 +38,23 @@ export class CardComponent implements OnInit {
 
       let dialogRef = this.dialog.open(CardEditDialogComponent, {
         data: {
-          currentCardsData: {...this.currentData[index]},
+          currentCardsData: this.cards[index],
         },
       });
 
 
       dialogRef.afterClosed().subscribe((result) => {
         if(!result) return
-        this.currentData[result.index] = result;
-        this.saveNewCard.emit(this.currentData);
+        const index = this.cards.findIndex((card)=> card.id == result.id)
+        if(index == -1) return
+        this.cards[index] = result;
+        this.saveNewCard.emit(this.cards);
       });
 
 
 
     } else {
-      this.router.navigateByUrl(this.currentData[index].path || '');
+      this.router.navigateByUrl(this.cards[index].path || '');
     }
   }
 }

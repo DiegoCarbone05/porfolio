@@ -1,8 +1,9 @@
+import { ICard } from './../../shared/card/card.component';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { Configuration } from '../models/configuration';
-import { share } from 'rxjs';
+import { Observable, share } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,22 @@ import { share } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
+  private get getAuthHeader() {
+    const token = localStorage.getItem('auth');
+    return {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+        'Access-Control-Allow-Origin': '*',
+      }),
+    };
+  }
+
   verifyToken(token: string) {
-
-    const authToken = { Authorization: 'Bearer '+ token }
-
-    const headers = new HttpHeaders(authToken);
     return this.http
-      .get<{ token: string }>(`${environment.baseUrl}auth/verify`, {
-        headers: headers,
-      })
+      .get<{ token: string }>(
+        `${environment.baseUrl}auth/verify`,
+        this.getAuthHeader
+      )
       .pipe(share());
   }
 
@@ -35,16 +43,20 @@ export class ApiService {
   }
 
   setConfig(data: Configuration) {
-
-    const token = localStorage.getItem('auth')
-
-    const headers = new HttpHeaders({ Authorization: 'Bearer '+ token, 'Access-Control-Allow-Origin': '*' });
-    console.log({ Authorization: 'Bearer '+ token });
-
     return this.http
-      .post<void>(`${environment.baseUrl}config/`, data, {
-        headers: headers,
-      })
+      .post<void>(`${environment.baseUrl}config/`, data, this.getAuthHeader)
+      .pipe(share());
+  }
+
+  getCards(): Observable<ICard[]> {
+    return this.http
+      .get<ICard[]>(`${environment.baseUrl}config/cards/`)
+      .pipe(share());
+  }
+
+  saveCards(newCard: ICard[]): Observable<ICard[]> {
+    return this.http
+      .post<ICard[]>(`${environment.baseUrl}config/cards/`, newCard, this.getAuthHeader)
       .pipe(share());
   }
 }

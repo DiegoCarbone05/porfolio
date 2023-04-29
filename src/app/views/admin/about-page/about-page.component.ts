@@ -26,8 +26,6 @@ export class AboutPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.configFacade.getAll().subscribe((res) => {
-      console.log(res);
-
       res.forEach((result: Configuration) => {
         switch (result.name) {
           case 'about_title':

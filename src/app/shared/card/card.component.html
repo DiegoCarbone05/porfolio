@@ -1,44 +1,44 @@
 <div class="card-container">
   <div class="card-group">
     <article mat-ripple (click)="editCard(0)">
-      <img [src]="currentData[0].picture" [alt]="currentData[0].title" />
+      <img [src]="cards[0]?.picture" [alt]="cards[0]?.title" />
       <span>
-        <h3>{{ currentData[0].title }}</h3>
-        <p>{{ currentData[0].descript }}</p>
-        <!-- <button *ngIf="currentData[0].button">
-          {{ currentData[0].button }}<mat-icon>chevron_right</mat-icon>
+        <h3>{{ cards[0]?.title }}</h3>
+        <p>{{ cards[0]?.desc }}</p>
+        <!-- <button *ngIf="cards[0].button">
+          {{ cards[0].button }}<mat-icon>chevron_right</mat-icon>
         </button> -->
       </span>
     </article>
     <article mat-ripple (click)="editCard(1)">
-      <img [src]="currentData[1].picture" [alt]="currentData[1].title"/>
+      <img [src]="cards[1]?.picture" [alt]="cards[1]?.title"/>
       <span>
-        <h3>{{ currentData[1].title }}</h3>
-        <p>{{ currentData[1].descript }}</p>
-        <!-- <button *ngIf="currentData[1].button">
-          {{ currentData[1].button }}<mat-icon>chevron_right</mat-icon>
+        <h3>{{ cards[1]?.title }}</h3>
+        <p>{{ cards[1]?.desc }}</p>
+        <!-- <button *ngIf="cards[1].button">
+          {{ cards[1].button }}<mat-icon>chevron_right</mat-icon>
         </button> -->
       </span>
     </article>
   </div>
   <div class="card-group" >
     <article mat-ripple (click)="editCard(2)">
-      <img [src]="currentData[2].picture" [alt]="currentData[2].title"/>
+      <img [src]="cards[2]?.picture" [alt]="cards[2]?.title"/>
       <span>
-        <h3>{{ currentData[2].title }}</h3>
-        <p>{{ currentData[2].descript }}</p>
-        <!-- <button *ngIf="currentData[2].button">
-          {{ currentData[2].button }}<mat-icon>chevron_right</mat-icon>
+        <h3>{{ cards[2]?.title }}</h3>
+        <p>{{ cards[2]?.desc }}</p>
+        <!-- <button *ngIf="cards[2].button">
+          {{ cards[2].button }}<mat-icon>chevron_right</mat-icon>
         </button> -->
       </span>
     </article>
     <article mat-ripple (click)="editCard(3)">
-      <img [src]="currentData[3].picture" [alt]="currentData[3].title"/>
+      <img [src]="cards[3]?.picture" [alt]="cards[3]?.title"/>
       <span>
-        <h3>{{ currentData[3].title }}</h3>
-        <p>{{ currentData[3].descript }}</p>
-        <!-- <button *ngIf="currentData[3].button">
-          {{ currentData[3].button }}<mat-icon>chevron_right</mat-icon>
+        <h3>{{ cards[3]?.title }}</h3>
+        <p>{{ cards[3]?.desc }}</p>
+        <!-- <button *ngIf="cards[3].button">
+          {{ cards[3].button }}<mat-icon>chevron_right</mat-icon>
         </button> -->
       </span>
     </article>

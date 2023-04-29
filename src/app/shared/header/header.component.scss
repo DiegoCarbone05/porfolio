@@ -103,6 +103,10 @@ header {
 //   }
 // }
 
+mat-drawer-container{
+  background: var(--body-surface) !important;
+}
+
 .pseudonav {
   width: 100%;
   height: 56px;

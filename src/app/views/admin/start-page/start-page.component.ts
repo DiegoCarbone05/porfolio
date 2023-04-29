@@ -4,6 +4,7 @@ import { IHero } from './../../../shared/hero/hero.component';
 import { Component, OnInit } from '@angular/core';
 import { Configuration } from 'src/app/core/models/configuration';
 import { combineLatest } from 'rxjs';
+import { CardsFacade } from 'src/app/core/facade/cards.facade';
 
 @Component({
   selector: 'app-start-page',
@@ -17,38 +18,12 @@ export class StartPageComponent implements OnInit {
     thirdText: '',
   };
 
-  cardData: ICard[] = [
-    {
-      index: 0,
-      picture: 'assets/resources/cards-pictures/nest-card.svg',
-      title: 'Nest JS',
-      descript:
-        'Hace relativamente poco intente mejorar mi apartado de backend y comenze tomando un curso de Udemy de NestJs.',
-    },
-    {
-      index: 1,
-      picture: 'assets/resources/cards-pictures/sp-card.svg',
-      title: 'Java SpringBoot',
-      descript:
-        'En mi cursada actual de Argentina Programa estoy aprendiendo a usar Java y en su defecto Springboot.',
-    },
-    {
-      index: 2,
-      picture: 'assets/resources/cards-pictures/next-card.svg',
-      title: 'Angular',
-      descript:
-        'Angular es uno de los primeros framework que aprendi a usar a mediados de 2020, pero aun sigo aprendiendo cosas nuevas, podria decirse que es mi framework principal',
-    },
-    {
-      index: 3,
-      picture: 'assets/resources/cards-pictures/react-card.svg',
-      title: 'React',
-      descript:
-        'Con mi conocimiento previo en Angular quise aprender otro framework en donde el Server Side Render sea un poco mas suporteado.',
-    },
-  ];
+  cardData: ICard[] = [];
 
-  constructor(private configFacade: ConfigurationFacade) {}
+  constructor(
+    private configFacade: ConfigurationFacade,
+    private cardFacade: CardsFacade
+  ) {}
 
   ngOnInit(): void {
     this.configFacade.getAll().subscribe((res) => {
@@ -68,13 +43,22 @@ export class StartPageComponent implements OnInit {
         }
       });
     });
+    this.cardFacade.getCards.subscribe((res) => (this.cardData = res));
   }
 
   //save card data
   saveDataCard(value: ICard[]) {
     this.cardData = value;
     //Send data
+    this.cardFacade.saveCards(this.cardData.filter(card => card)).subscribe((res) => {
+      this.cardFacade.refresh();
+      console.log(res);
+
+    });
   }
+
+
+
   saveDataHero() {
     combineLatest([
       this.configFacade.setConfig(
@@ -86,7 +70,7 @@ export class StartPageComponent implements OnInit {
       this.configFacade.setConfig(
         new Configuration('banner_bottom_text', this.heroData.thirdText)
       ),
-    ]).subscribe((res) => {
+    ]).subscribe(() => {
       this.configFacade.refresh();
     });
   }

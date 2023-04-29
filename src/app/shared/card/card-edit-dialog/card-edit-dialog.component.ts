@@ -13,7 +13,7 @@ export class CardEditDialogComponent implements OnInit {
 
   editCardForm = new FormGroup({
     title: new FormControl(this.data.currentCardsData.title),
-    descript: new FormControl(this.data.currentCardsData.descript),
+    desc: new FormControl(this.data.currentCardsData.desc),
     path: new FormControl(this.data.currentCardsData.path),
   });
 
@@ -29,7 +29,7 @@ export class CardEditDialogComponent implements OnInit {
       this.currentData = {
         ...this.currentData,
         title: data.title as string,
-        descript: data.descript as string,
+        desc: data.desc as string,
         path: data.path as string,
       } as ICard;
     });
@@ -37,6 +37,7 @@ export class CardEditDialogComponent implements OnInit {
 
   submit() {
     this.dialogRef.close(this.currentData);
+
   }
 
   onNoClick(): void {

@@ -1,3 +1,4 @@
+import { CardsFacade } from 'src/app/core/facade/cards.facade';
 import { ConfigurationFacade } from 'src/app/core/facade/configuration.facade';
 import { Component } from '@angular/core';
 import { AuthService } from './views/auth/services/auth.service';
@@ -11,19 +12,23 @@ import { UtilsService } from './core/services/utils.service';
 export class AppComponent {
   title = 'diego-carbone-pf';
   spinnerStatus: boolean = true;
-  constructor(private authSvc:AuthService, private utilsSvc:UtilsService, private configurationFacade:ConfigurationFacade) {
+  constructor(
+    private authSvc: AuthService,
+    private utilsSvc: UtilsService,
+    private configurationFacade: ConfigurationFacade,
+    private CardsFacade:CardsFacade
+  ) {
 
-    this.configurationFacade.refresh()
-
-    if(localStorage.getItem('theme')){
-      setTimeout(()=>{
-        this.spinnerStatus = false
-      }, 500)
+    if (localStorage.getItem('theme')) {
+      setTimeout(() => {
+        this.spinnerStatus = false;
+      }, 500);
     }
 
-    this.authSvc.verifyToken()
+    this.authSvc.verifyToken();
     this.utilsSvc.checkTheme();
 
+    this.configurationFacade.refresh();
+    this.CardsFacade.refresh()
   }
-
 }

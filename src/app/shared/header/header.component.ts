@@ -17,7 +17,6 @@ interface navItem {
 export class HeaderComponent implements OnInit {
   navItems: navItem[];
   darkMode: boolean = false;
-  isLogged: boolean = false;
   sidenavStatus: boolean = false;
   argentinaProgramaLogoUrl: string =
     'assets/resources/logos/SVG/ap-logo-light.svg';
@@ -25,7 +24,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private utilsSvc: UtilsService,
     private router: Router,
-    private authSvc: AuthService
+    public authSvc: AuthService
   ) {
     this.navItems = [
       { text: 'Inicio', path: '/home', icon: 'home' },
@@ -35,17 +34,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
     this.authSvc.verifyToken()?.subscribe({
       next: () => {
         console.log('Autenticacion correcta');
-        this.authSvc.loginStatus = true;
-        this.isLogged = this.authSvc.loginStatus;
+        this.authSvc.loginStatus.next(true);
       },
       error: (err) => {
-        console.log('Autenticacion correcta');
+        console.log('Autenticacion pelotudo');
         localStorage.removeItem('auth');
-        this.authSvc.loginStatus = true;
-        this.isLogged = this.authSvc.loginStatus;
+        this.authSvc.loginStatus.next(false);
       },
     });
 
