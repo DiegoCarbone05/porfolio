@@ -1,7 +1,7 @@
-export interface ISkillGroup {
-}
-
 export interface ISkill {
+  id?:number;
+  type?:string;
   name:string;
-  description:string;
+  value:number;
+  color?:string;
 }

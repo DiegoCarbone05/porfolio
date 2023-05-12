@@ -26,6 +26,7 @@ export class AuthService {
   }
 
   private verifyCredentials(email: string, password: string) {
+
     let melisa = { email: email, password: password };
 
     if (melisa) {
@@ -38,16 +39,6 @@ export class AuthService {
 
   public login(credentials: LoginDto) {
     const { mail, password, savePassword } = credentials;
-
-    return this.verifyCredentials(mail, password).subscribe((token) => {
-      this.accessToken = token.token;
-
-      if (savePassword && token) {
-        localStorage.setItem('auth', this.accessToken);
-      }
-
-
-
-    });
+    return this.verifyCredentials(mail, password);
   }
 }

@@ -9,7 +9,7 @@ export interface ICard {
   picture: string;
   title: string;
   desc: string;
-  path?: string;
+  url?: string;
 }
 
 @Component({
@@ -25,6 +25,10 @@ export class CardComponent implements OnInit {
   cards!: ICard[];
 
   constructor(public router: Router, public dialog: MatDialog) {}
+
+  ngOnChanges(changes: any): void {
+    this.cards = changes.data.currentValue
+  }
 
   ngOnInit(): void {
     this.cards = this.data;
@@ -49,12 +53,13 @@ export class CardComponent implements OnInit {
         if(index == -1) return
         this.cards[index] = result;
         this.saveNewCard.emit(this.cards);
+
       });
 
 
 
     } else {
-      this.router.navigateByUrl(this.cards[index].path || '');
+      window.open(this.cards[index].url, '_blank');
     }
   }
 }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { Configuration } from '../models/configuration';
 import { Observable, share } from 'rxjs';
+import { ISkill } from '../Interfaces/iskill';
 
 @Injectable({
   providedIn: 'root',
@@ -55,8 +56,28 @@ export class ApiService {
   }
 
   saveCards(newCard: ICard[]): Observable<ICard[]> {
+
     return this.http
       .post<ICard[]>(`${environment.baseUrl}config/cards/`, newCard, this.getAuthHeader)
+      .pipe(share());
+  }
+
+  getSkills(){
+    return this.http
+    .get<ISkill[]>(`${environment.baseUrl}config/skills/`)
+    .pipe(share());
+  }
+
+  saveSkills(newSkill: ISkill): Observable<ISkill[]> {
+
+    return this.http
+      .post<ISkill[]>(`${environment.baseUrl}config/skills/`, newSkill, this.getAuthHeader)
+      .pipe(share());
+  }
+
+  deleteSkill(id: number): Observable<ISkill> {
+    return this.http
+      .delete<ISkill>(`${environment.baseUrl}config/skills/`+id)
       .pipe(share());
   }
 }

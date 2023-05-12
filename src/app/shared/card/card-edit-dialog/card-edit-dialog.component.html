@@ -3,19 +3,19 @@
   <br />
   <img
     class="mobile-preview-image"
-    [src]="currentData.picture"
-    [alt]="currentData.title"
+    [src]="currentData?.picture ?? 'assets/resources/pictures/img-404-card.svg'"
+    [alt]="currentData?.title"
   />
   <br /><br />
   <div class="content">
     <form class="wrap" [formGroup]="editCardForm">
       <mat-form-field appearance="outline">
+        <mat-label>Picture URL</mat-label>
+        <input matInput formControlName="picture" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Título de tarjeta</mat-label>
-        <input
-          matInput
-          placeholder="My cart title"
-          formControlName="title"
-        />
+        <input matInput placeholder="My cart title" formControlName="title" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Descripción</mat-label>
@@ -28,21 +28,20 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Ruta</mat-label>
-        <input
-          matInput
-          formControlName="path"
-        />
+        <input matInput formControlName="url" />
       </mat-form-field>
     </form>
     <div class="wrap">
       <article mat-ripple>
-        <img [src]="currentData.picture" [alt]="currentData.title" />
+        <img
+          [src]="
+            currentData?.picture ?? 'assets/resources/pictures/img-404-card.svg'
+          "
+          [alt]="currentData?.title"
+        />
         <span>
-          <h3>{{ currentData.title }}</h3>
-          <p>{{ currentData.desc }}</p>
-          <!-- <button *ngIf="currentData.button">
-            {{ currentData.button }}<mat-icon>chevron_right</mat-icon>
-          </button> -->
+          <h3>{{ currentData?.title ?? "Titulo" }}</h3>
+          <p>{{ currentData?.desc ?? "Descripción" }}</p>
         </span>
       </article>
     </div>

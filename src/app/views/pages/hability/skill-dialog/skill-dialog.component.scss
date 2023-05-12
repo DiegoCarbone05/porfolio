@@ -1,0 +1,69 @@
+mat-form-field{
+  width: 100%;
+}
+mat-slider{
+  width: 95%;
+}
+button{
+  width: 90%;
+}
+form{
+  width: 90%;
+}
+.wrap-dialog{
+  padding-bottom: 30px;
+  max-width: 400px;
+  background-color: var(--card-login-back);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--foreground-color);
+
+  .wrap-skill-card {
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: var(--card-login-back);
+    border: 2px solid var(--card-login-back);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 420px;
+
+    gap: 30px;
+    transition: all 0.2s;
+    position: relative;
+
+    .progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--foreground-color);
+
+      span {
+        position: absolute;
+      }
+    }
+
+    p {
+      margin: 0;
+      color: var(--foreground-color);
+    }
+
+    .app-name {
+      font-size: 25px;
+      font-weight: 500;
+    }
+    .desc {
+      line-height: 1.4;
+      opacity: 0.5;
+    }
+  }
+
+  .button-container{
+    display: flex;
+    width: 90%;
+    gap: 12px;
+  }
+}

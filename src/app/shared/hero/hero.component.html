@@ -1,14 +1,24 @@
 <div class="wrap-hero">
   <div class="content">
-    <picture>
+    <!-- <picture>
       <source srcset="assets/resources/pic-banner-desk.png" media="(min-width: 1200px)">
       <img src="assets/resources/pic-banner-desk.png" alt="">
-    </picture>
+    </picture> -->
+    <div class="wrap-image">
+      <div
+        class="image"
+        style="
+          background: url('{{heroData.imgSrc}}');
+        "
+      ></div>
+      <div class="solid-box">
+        <img class="form" src="assets/resources/form 1.svg" alt="">
+      </div>
+    </div>
     <span>
-      <p>{{heroData.firstText}}</p>
-      <h1>{{heroData.secondText}}</h1>
-      <h2>{{heroData.thirdText}}</h2>
+      <p>{{ heroData.firstText }}</p>
+      <h1>{{ heroData.secondText }}</h1>
+      <h2>{{ heroData.thirdText }}</h2>
     </span>
-
   </div>
 </div>

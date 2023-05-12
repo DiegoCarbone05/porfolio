@@ -86,8 +86,8 @@
             <mat-label>Mail</mat-label>
             <input matInput formControlName="mail" type="email" />
           </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Contraseña</mat-label>
+          <mat-form-field appearance="outline"
+            ><mat-label>Contraseña</mat-label>
             <input
               matInput
               formControlName="password"
@@ -104,9 +104,22 @@
               }}</mat-icon>
             </button>
           </mat-form-field>
+          <p *ngIf="errorMessage" class="error-message">
+            Error al iniciar sesión, verifique las credenciales.
+          </p>
           <div class="btn-container">
-            <button class="white-text" mat-flat-button (click)="loggin()">
-              <span>Siguente</span>
+            <button
+              [disabled]="isLoading"
+              class="white-text"
+              mat-flat-button
+              (click)="loggin()"
+            >
+              {{ isLoading ? "" : "Siguente" }}
+              <mat-spinner
+                [diameter]="21"
+                class="spinner"
+                *ngIf="isLoading"
+              ></mat-spinner>
             </button>
           </div>
         </form>

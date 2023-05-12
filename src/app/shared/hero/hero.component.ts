@@ -4,6 +4,7 @@ export interface IHero {
   firstText: string;
   secondText: string;
   thirdText: string;
+  imgSrc:string;
 }
 
 @Component({

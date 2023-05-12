@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PagesComponent } from './pages.component';
 import { HabilityComponent } from './hability/hability.component';
+import { SkillDialogComponent } from './hability/skill-dialog/skill-dialog.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { HabilityComponent } from './hability/hability.component';
     AboutComponent,
     PagesComponent,
     HabilityComponent,
+    SkillDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -1,9 +1,6 @@
 <div class="wrap-start-page">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight>
     <mat-tab label="Hero princpial">
-
-
-
       <button
         (click)="saveDataHero()"
         mat-fab
@@ -12,9 +9,6 @@
       >
         <mat-icon>save</mat-icon>
       </button>
-
-
-
       <div class="outline"></div>
       <br /><br />
       <div class="input-container">
@@ -48,6 +42,16 @@
             />
           </mat-form-field>
         </span>
+        <span>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Url de imagen</mat-label>
+            <input
+              matInput
+              placeholder="text"
+              [(ngModel)]="heroData.imgSrc"
+            />
+          </mat-form-field>
+        </span>
       </div>
       <div class="hero-container">
         <div class="hero">
@@ -58,7 +62,25 @@
     </mat-tab>
     <mat-tab label="Cards">
       <div class="outline"></div>
-      <br /><br /><br />
+      <br /><br />
+
+
+      <div style="display: flex; gap: 20px;">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Titulo de seccion</mat-label>
+          <input
+            matInput
+            placeholder="text"
+            [(ngModel)]="cardTitleSeccion"
+          />
+        </mat-form-field>
+        <button color="primary" mat-icon-button (click)="saveCardTitle()">
+            <mat-icon class="mat-18">save</mat-icon>
+        </button>
+      </div>
+
+
+      <br />
       <app-card
         (saveNewCard)="saveDataCard($event)"
         [editMode]="true"

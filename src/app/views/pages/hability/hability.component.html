@@ -1,29 +1,20 @@
 <div class="wrap-skills">
-  <br>
-  <h2>Proyectos terminados</h2>
-  <br>
-  <div class="wrap-skill-card">
-    <p class="app-name">Meeting Studio</p>
-    <p class="desc">Una app de transmisión de medios sensilla hecha con ElectronJs y Angular para eventos de bajo perfil.</p>
+  <br />
+  <h2>Habilidades</h2>
+  <br />
+  <div class="list">
+    <div class="wrap-skill-card" *ngFor="let item of skills" (click)="addSkillToList(item)">
+      <div class="progress">
+        <mat-progress-spinner class="example-margin" [value]="item.value"></mat-progress-spinner>
+        <span>{{ item.value }}%</span>
+      </div>
+      <span>
+        <p class="desc">{{item.type}}</p>
+        <p class="app-name">{{item.name}}</p>
+      </span>
+    </div>
+    <div class="add-skill" mat-ripple (click)="addSkillToList()" *ngIf="authSvc.loginStatus | async">
+      <mat-icon class="mat-18">add</mat-icon>
+    </div>
   </div>
-  <br>
-  <div class="wrap-skill-card">
-    <p class="app-name">Meeting Studio</p>
-    <p class="desc">Una app de transmisión de medios sensilla hecha con ElectronJs y Angular para eventos de bajo perfil.</p>
-  </div>
-
-  <br><br>
-
-  <h2>Estudios previos terminados</h2>
-
-  <div class="wrap-skill-card">
-    <p class="app-name">Meeting Studio</p>
-    <p class="desc">Una app de transmisión de medios sensilla hecha con ElectronJs y Angular para eventos de bajo perfil.</p>
-  </div>
-  <br>
-  <div class="wrap-skill-card">
-    <p class="app-name">Meeting Studio</p>
-    <p class="desc">Una app de transmisión de medios sensilla hecha con ElectronJs y Angular para eventos de bajo perfil.</p>
-  </div>
-
 </div>

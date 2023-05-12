@@ -16,9 +16,11 @@ export class StartPageComponent implements OnInit {
     firstText: '',
     secondText: '',
     thirdText: '',
+    imgSrc: '',
   };
 
   cardData: ICard[] = [];
+  cardTitleSeccion!: string;
 
   constructor(
     private configFacade: ConfigurationFacade,
@@ -40,6 +42,12 @@ export class StartPageComponent implements OnInit {
           case 'banner_bottom_text':
             this.heroData.thirdText = result.value;
             break;
+          case 'card_section_title':
+            this.cardTitleSeccion = result.value;
+            break;
+          case 'banner_img_src':
+            this.heroData.imgSrc = result.value;
+            break;
         }
       });
     });
@@ -50,14 +58,20 @@ export class StartPageComponent implements OnInit {
   saveDataCard(value: ICard[]) {
     this.cardData = value;
     //Send data
-    this.cardFacade.saveCards(this.cardData.filter(card => card)).subscribe((res) => {
-      this.cardFacade.refresh();
-      console.log(res);
-
-    });
+    this.cardFacade
+      .saveCards(this.cardData.filter((card) => card))
+      .subscribe((res) => {
+        this.cardFacade.refresh();
+      });
   }
 
-
+  saveCardTitle() {
+    this.configFacade
+      .setConfig(new Configuration('card_section_title', this.cardTitleSeccion))
+      .subscribe(() => {
+        this.configFacade.refresh();
+      });
+  }
 
   saveDataHero() {
     combineLatest([
@@ -69,6 +83,9 @@ export class StartPageComponent implements OnInit {
       ),
       this.configFacade.setConfig(
         new Configuration('banner_bottom_text', this.heroData.thirdText)
+      ),
+      this.configFacade.setConfig(
+        new Configuration('banner_img_src', this.heroData.imgSrc)
       ),
     ]).subscribe(() => {
       this.configFacade.refresh();

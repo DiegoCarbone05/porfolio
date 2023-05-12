@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     this.navItems = [
       { text: 'Inicio', path: '/home', icon: 'home' },
       { text: 'Sobre mi', path: '/about', icon: 'person' },
-      // { text: 'Habilidades', path: '/skills', icon: 'query_stats' },
+      { text: 'Habilidades', path: '/skills', icon: 'query_stats' },
     ];
   }
 
@@ -87,6 +87,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('auth/login');
   }
   openAdmin() {
-    this.router.navigateByUrl('admin/dashboard');
+    this.router.navigateByUrl('admin/main-page');
   }
 }

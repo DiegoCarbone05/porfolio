@@ -24,7 +24,7 @@
   </mat-drawer>
   <mat-drawer-content>
     <div class="wrap-skill-group-visualizer">
-      <app-skill-item *ngFor="let skill of skillItems" [itemSource]="skill" (modifySkill)="drawer.opened = true"></app-skill-item>
+      <app-skill-item (modifySkill)="drawer.opened = true"></app-skill-item>
       <button mat-stroked-button class="add-button">
         <mat-icon>add</mat-icon>
       </button>

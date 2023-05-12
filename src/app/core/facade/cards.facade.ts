@@ -3,21 +3,20 @@ import { CardStore } from './../state/card.store';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root',
 })
 export class CardsFacade {
-  constructor(private cardRepo:CardStore){}
+  constructor(private cardRepo: CardStore) {}
 
-  get getCards(){
-    return this.cardRepo.getCards
+  get getCards() {
+    return this.cardRepo.getCards;
   }
 
-  saveCards(newCards:ICard[]){
-    return this.cardRepo.saveCards(newCards)
+  saveCards(newCards: ICard[]) {
+    return this.cardRepo.saveCards(newCards);
   }
 
-  refresh(){
-    this.cardRepo.refresh()
+  refresh() {
+    this.cardRepo.refresh();
   }
-
 }

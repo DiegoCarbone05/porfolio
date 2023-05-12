@@ -1,0 +1,54 @@
+<div class="wrap-dialog">
+  <div class="wrap-skill-card">
+    <div class="progress">
+      <mat-progress-spinner
+        class="example-margin"
+        [value]="data.item.value"
+      ></mat-progress-spinner>
+      <span>{{ data.item.value }}%</span>
+    </div>
+    <span>
+      <p class="desc">Habilidad</p>
+      <p class="app-name">{{ data.item.name }}</p>
+    </span>
+  </div>
+  <br />
+  <form [formGroup]="skillForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-label>Porcentaje</mat-label>
+    <mat-slider>
+      <input matSliderThumb formControlName="value" />
+    </mat-slider>
+  </form>
+  <br /><br />
+  <span class="button-container">
+    <button
+      mat-stroked-button
+      *ngIf="!data.editMode && !confirmDeleteStatus"
+      (click)="confirmDelete()"
+      color="warn"
+    >
+      Borrar
+    </button>
+    <button
+      mat-flat-button
+      *ngIf="!data.editMode && confirmDeleteStatus"
+      (click)="deleteSkill()"
+      color="warn"
+    >
+      Estas seguro?
+    </button>
+    <button mat-flat-button (click)="onNoClick()">Cancelar</button>
+    <button
+      style="color: black"
+      mat-flat-button
+      color="primary"
+      (click)="save()"
+    >
+      Guardar
+    </button>
+  </span>
+</div>

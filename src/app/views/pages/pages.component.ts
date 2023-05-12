@@ -1,17 +1,22 @@
+import { CardsFacade } from 'src/app/core/facade/cards.facade';
 import { IFooterData } from './../../shared/footer/footer.component';
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss'],
 })
-export class PagesComponent {
-  constructor(private router: Router) {
+export class PagesComponent implements OnInit {
+  constructor(private router: Router, private CardsFacade:CardsFacade) {
     // if (location.pathname === '/') {
     //   this.router.navigateByUrl('/home');
     // }
+  }
+
+  ngOnInit(): void {
+      this.CardsFacade.refresh()
   }
 
   footerData: IFooterData[] = [

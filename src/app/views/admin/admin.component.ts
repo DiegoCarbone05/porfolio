@@ -23,12 +23,12 @@ export class AdminComponent implements OnInit {
   menuButtonVisibility: boolean = true;
   sidenavItems = {
     start: [
-      {
-        text: 'Inicio',
-        icon: 'home',
-        path: 'dashboard',
-        parentRouter: 'admin/',
-      },
+      // {
+      //   text: 'Inicio',
+      //   icon: 'home',
+      //   path: 'dashboard',
+      //   parentRouter: 'admin/',
+      // },
       {
         text: 'Pagina principal',
         icon: 'domain_verification',

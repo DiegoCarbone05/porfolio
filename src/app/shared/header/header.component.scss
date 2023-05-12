@@ -344,5 +344,6 @@ main {
     overflow: hidden;
     animation: startAnimation 0.5s;
     background-color: var(--body-surface);
+    min-height: 93vh;
   }
 }

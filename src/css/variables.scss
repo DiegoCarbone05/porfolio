@@ -1,5 +1,4 @@
 :root {
-  --color-primary: #FF833C;
   --color-primary-tint-100: #ff833c72;
   --color-primary-tint-200: #ff833c18;
 
@@ -29,7 +28,8 @@
 }
 
 .light {
-  --color-primary-font: #FF833C;
+  --color-primary: #07d39b;
+  --color-primary-font: #ffe601;
   --header-surface: #ffffffb8;
   --body-surface: var(--color-step-1000);
   --logotype-font-color: var(--color-step-400);
@@ -58,7 +58,8 @@
   --admin-background:#fafafa;
 }
 .dark {
-  --color-primary-font: #ffc5a4;
+  --color-primary: #07d39b;
+  --color-primary-font: #fff159;
   --header-surface: #101010cc;
   --body-surface: #171717;
   --logotype-font-color: var(--color-step-1000);
