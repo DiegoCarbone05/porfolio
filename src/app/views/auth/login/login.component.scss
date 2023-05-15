@@ -8,6 +8,12 @@ $method-1-acrylic-noise-texture: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEU
 mat-icon{
   color: var(--foreground-color);
 }
+.arrow-button{
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  left: 16px;
+}
 .wrap-login {
   width: 100vw;
   display: flex;

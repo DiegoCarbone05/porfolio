@@ -1,3 +1,7 @@
+<button class="arrow-button" mat-icon-button (click)="exitOfLogin()">
+    <mat-icon class="mat-18">arrow_back</mat-icon>
+</button>
+
 <div class="wrap-login">
   <div class="card-login">
     <div class="picture"></div>
@@ -109,7 +113,7 @@
           </p>
           <div class="btn-container">
             <button
-              [disabled]="isLoading"
+              [disabled]="isLoading || !inputsContent"
               class="white-text"
               mat-flat-button
               (click)="loggin()"

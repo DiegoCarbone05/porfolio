@@ -26,14 +26,7 @@ export class AuthService {
   }
 
   private verifyCredentials(email: string, password: string) {
-
     let melisa = { email: email, password: password };
-
-    if (melisa) {
-      this.loginStatus.next(true);
-    } else {
-      this.loginStatus.next(false);
-    }
     return this.apiSvc.login(melisa);
   }
 

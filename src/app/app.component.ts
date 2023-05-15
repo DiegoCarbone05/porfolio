@@ -30,14 +30,14 @@ export class AppComponent {
     private configurationFacade: ConfigurationFacade,
     private CardsFacade: CardsFacade
   ) {
+    console.log('Contecting');
+
     this.configurationFacade.getAll().subscribe((res) => {
-      console.log(res);
-    });
-    if (localStorage.getItem('theme')) {
-      setTimeout(() => {
+      if (localStorage.getItem('theme') && res.length) {
         this.spinnerStatus = false;
-      }, 500);
-    }
+        console.log(this.spinnerStatus);
+      }
+    });
 
     this.authSvc.verifyToken();
     this.utilsSvc.checkTheme();
